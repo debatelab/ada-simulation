@@ -1,0 +1,4 @@
+{
+    "python.pythonPath": "env_bd-lm/bin/python3",
+    "jupyter.jupyterServerType": "local"
+}
