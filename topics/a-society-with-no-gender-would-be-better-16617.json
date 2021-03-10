@@ -1,0 +1,1474 @@
+{
+    "id": "society-with-no-gender",
+    "claims": {
+        "connector": " And therefore, all in all,",
+        "pro": [
+            " a society without gender is a pretty good idea, there is no need to distinguish between men and women."
+        ],
+        "con": [
+            " a society without gender is a really bad idea, there are important differences between men and women we should pay attention to."
+        ]
+    },
+    "intro": "Let's discuss a society without gender!",
+    "prompt": "I more or less agree with what my peers are saying here. Regarding the idea of a society without gender, I'd just add the following thought:\n",
+    "initial_posts": [
+        {
+            "text": "The absence of gender constructions would enable people to enjoy a better overall quality of life."
+        },
+        {
+            "text": "Without gender constructs, people can take care of themselves more, by modifying themselves (in any way, be it behaviorally, physically (appearances - surgery, clothing, etc.), culturally, etc.) for functionality to succeed in life, rather than 'playing up' to gender norms. Then, instead of conforming to the norms to the point it negatively impacts their life, they can get better at what will help them succeed."
+        },
+        {
+            "text": "This incorrectly supposes that some current biological sex traits aren't functional."
+        },
+        {
+            "text": "Surgery has inherit risk, so modifying one's body is not really safe."
+        },
+        {
+            "text": "For some, conforming to social norms is comforting and helpful."
+        },
+        {
+            "text": "Gender serves many additional functions other than simply pressuring people to behave a certain way. We can encourage individual expression without tossing out the entire concept."
+        },
+        {
+            "text": "Human beings group others into categories in order to more speedily process the world, and make predictions about what will happen. Gender is a shortcut for the brain, as much as other physical characteristics. [Representativeness Heuristic](https://www.verywellmind.com/representativeness-heuristic-2795805)"
+        },
+        {
+            "text": "Stress would be lifted from people trying to conform to a gender norm, especially if they felt the norm did not suit them."
+        },
+        {
+            "text": "If people do not fit gender norms, then they can miss out on opportunities by not portraying themselves in a way that people can work with (gender is part of a person's presentation/portrayal of capabilities)."
+        },
+        {
+            "text": "Likely behavioural patterns and expectations would be judged on different concepts, but it would still lead to difficulties for those who don't \"fit.\""
+        },
+        {
+            "text": "Cis-women often experience stress from the contradictory messages they get about their gender roles."
+        },
+        {
+            "text": "Forcing a loss of gender is also contradictory and stress inducing."
+        },
+        {
+            "text": "Gender inequality would disappear."
+        },
+        {
+            "text": "Society would be less discriminatory."
+        },
+        {
+            "text": "Gender inequality would no longer occur"
+        },
+        {
+            "text": "Because of the [narcisssism of minor differences](https://en.wikipedia.org/wiki/Narcissism_of_small_differences) humans are inherently discriminatory. If gender is taken away discrimination will take place on another level, e.g. plotting different quarters of a city against each other."
+        },
+        {
+            "text": "I think it would have the potential for true equality but I don't think it is necessary for that. Why can't I be a man who enjoys being a man and other people be women that enjoy being women or so on? Just like race isn't the problem causing racism I don't think gender is causing inequality, I think stupid and scared people in positions of power are responsible for that."
+        },
+        {
+            "text": "Discrimination is especially problematic online."
+        },
+        {
+            "text": "Discrimination is a particular problem for [adolescents](http://www.apa.org/science/about/psa/2015/12/online-racial-discrimination.aspx)."
+        },
+        {
+            "text": "You can hide your gender or act as the other one online = I do not think this is true"
+        },
+        {
+            "text": "I understand that people want to be inclusive and friendly, but the only way to be truly inclusive is to help these people accept and come to terms with who they are, right down to their genetics."
+        },
+        {
+            "text": "There are always going to be disparities in what we can accomplish with our given sex (child birth/lifting heavy things). We will have different needs, and different expectations of us based on those different abilities. It's not really a realistic proposition."
+        },
+        {
+            "text": "LGBTI people would be a group that would particularly benefit."
+        },
+        {
+            "text": "Violence against women would reduce.[mobile.abc.net.au](http://mobile.abc.net.au/news/2018-07-30/parents-can-promote-gender-equality-and-help-prevent-violence-a/10050608?pfmredir=sm)"
+        },
+        {
+            "text": "The systemic causes behind violence against women are rooted on sexist and misogynist stereotypes and values. And thus, as gender disappears, they will also disappear."
+        },
+        {
+            "text": "It won't disappear. The idea of Sexist Violence in the eyes of society might, but that's only because what we call Gender-based violence is just that... Violence. What you would see in a drop in Gender based violence, there would be a spike in generalized Violence to take its place. Its only taking a tag of something and putting it into a generalized pool of everything else. It helps no one and Dis-benefits everybody involved."
+        },
+        {
+            "text": "We are inherently violent creatures. The thing we are best at is killing."
+        },
+        {
+            "text": "Not acknowledging a fact, does not make a fact less real. Women would lose the protections in place for them now."
+        },
+        {
+            "text": "There may be the same levels of violence, it would just not be known whether the acts of violence were committed against men or women."
+        },
+        {
+            "text": "Gender-specific stereotypes and attitudes which enable sexist violence would no longer exist. Therefore, it would be impossible to select people for violence based on their gender."
+        },
+        {
+            "text": "Any violent behavior targeted at the traits now associated with gender would be illogical, because that would assume that gender stereotypes would persist without gender. Such an assumption would almost certainly also include the academically false assumption that gender is biological."
+        },
+        {
+            "text": "The underlying differences that lead to negative attitudes and violence would still exist, regardless of the absence of labels."
+        },
+        {
+            "text": "If there is no word for woman, negative attitudes about women cannot be expressed and passed on in culture."
+        },
+        {
+            "text": "If \"women\" is an observable phenomenon, then a discrete way of referring to that group will be created. Birds don't stop flying because you ban the word \"birds\"."
+        },
+        {
+            "text": "Violence is often a power issue. Removing the concept of female vs male won't magically make biologically female entities physically stronger."
+        },
+        {
+            "text": "Violence against women is the targeting of women for violence based on or related to their gender, and is therefore a hate crime. It is not violence that happens to a woman regardless of the reason, as not all violence is a hate crime."
+        },
+        {
+            "text": "Domestic abuse is a hate crime when it is against women, but is not when it is against men? That is not reasonable."
+        },
+        {
+            "text": "This is a [strawman](https://en.wikipedia.org/wiki/Straw_man). Parent does not claim does not mention domestic abuse, nor claim that domestic abuse of men is non-criminal."
+        },
+        {
+            "text": "Reducing violence against women by definition only would not be helpful."
+        },
+        {
+            "text": "statistically men are more likely to be victims of violence"
+        },
+        {
+            "text": "Biological acts of violence such as rape would continue unimpeded."
+        },
+        {
+            "text": "No gender is a crooked alternative to equal rights"
+        },
+        {
+            "text": "Saying there is no gender will not eliminate the obvious distinctions between the two"
+        },
+        {
+            "text": "The obvious distinction between the two is covered by our pants. Everything else would become diluted without gender (provided that society still use pants)"
+        },
+        {
+            "text": "[Toxic masculinity](https://www.urbandictionary.com/define.php?term=Toxic%20Masculinity), with all of its[harmful effects](https://thepsychologist.bps.org.uk/volume-21/edition-4/masculinities-and-suicide), would be eliminated."
+        },
+        {
+            "text": "If toxic masculinity is a product of testosterone, it won't go away."
+        },
+        {
+            "text": "The idea that toxic masculinity is tied to testosterone is a [strawman](https://en.wikipedia.org/wiki/Straw_man)."
+        },
+        {
+            "text": "Both men and women have testosterone."
+        },
+        {
+            "text": "Obviously, but the relative amounts are what is important."
+        },
+        {
+            "text": "We have the medical ability to change the relative amounts."
+        },
+        {
+            "text": "The concept of \"toxic masculinity\" is widely recognized as depending on culture more than biology."
+        },
+        {
+            "text": "There are no cultures where toxic masculinity is enacted by females."
+        },
+        {
+            "text": "That is not relevant."
+        },
+        {
+            "text": "There are cultures in which \"toxic masculinity\" is recognized to occur, and cultures in which \"masculinity\" occurs without being \"toxic\"."
+        },
+        {
+            "text": "Genderless men would still display toxic masculinity. Not all me do, so it's a problem of upbringing rather than society."
+        },
+        {
+            "text": "Inequality would continue to exist, gendered or not."
+        },
+        {
+            "text": "Those born female would have greater opportunities for accessing promotions, wage justice and financial equality."
+        },
+        {
+            "text": "Wage gap has been pretty thoroughly debunked.in employment sought,"
+        },
+        {
+            "text": "In developed countries women already have equal opportunity in regard to employment and career, and in some cases more opportunity. No longer recognising the female gender could possibly erode their current rights and not improve them."
+        },
+        {
+            "text": "The gender wage gap in many developed nations suggests women do not have equal opportunities."
+        },
+        {
+            "text": "Wage gap argument nullified if u factor in employment sought, comparative hours worked, level of danger/hazard pay, men typically dont stay home with kids, etc"
+        },
+        {
+            "text": "Inequality would remain as equality is subject to individual perception and measure."
+        },
+        {
+            "text": "There is too much biological and psychological difference between man and woman, a society with no gender wouldn't bring anything good to society"
+        },
+        {
+            "text": "There are no universal psychological differences between males and females."
+        },
+        {
+            "text": "Differences don't have to be universal to be predominantly true. \"The exception proves the rule\" applies."
+        },
+        {
+            "text": "When there is greater variation within a category than outside a category, the classification ceases to be useful."
+        },
+        {
+            "text": "There isn't greater variation than not within the human category. Gendered behavior and appearance is found in over 99% of people."
+        },
+        {
+            "text": "This claim thread is about psychological differences between male and females, not appearance."
+        },
+        {
+            "text": "How people choose to dress or style their hair is behavior, which is not biological."
+        },
+        {
+            "text": "Behavior of males and females overlaps in greater ways than it differs."
+        },
+        {
+            "text": "The overlap of non-gender related behavior is immaterial to a discussion of gender behavior."
+        },
+        {
+            "text": "Overlap vs. difference is related to the formation and maintenance of categories in regards to \"the exception proves the rule\". You must have enough difference for categories to form before you can have an exception. Because individuals vary widely, there is more overlap in commonality than apparent difference. This is why [surgeons can't tell the difference](https://www.quora.com/Would-a-neurosurgeon-be-able-to-tell-the-difference-between-a-male-and-female-brain) between a male/female brain. [People that are clearly-male or clearly-female *are* the exception](https://www.nbcnews.com/better/wellness/can-you-tell-which-brains-are-male-neither-can-these-n471751), commonality is the rule."
+        },
+        {
+            "text": "This would suggest that all primates must be human due to genetic similarities. This categorization based on similarity is an obviously pointless exercise."
+        },
+        {
+            "text": "Surgeons can tell the difference between a primate brain and a human brain."
+        },
+        {
+            "text": "Portions of male and female brains are demonstrably [dimorphic](https://en.wikipedia.org/wiki/Neuroscience_of_sex_differences), suggesting that the surgeons in the parent clearly aren't looking in the right places."
+        },
+        {
+            "text": "Here's an example from your link. \"Females show enhanced information recall compared to males.\" While this is a difference \\[average of all females vs average of all males\\], the vast majority of men can also do information-recall. And the majority of outcomes found in those ranges overlap \\[if you choose one individual data point, you could not know whether that person *is* female, you could only say they are *more likely* to be\\]. This is what is meant by greater overlap than difference."
+        },
+        {
+            "text": "The fact that both men and women eat doesn't mean there is no difference between men and women."
+        },
+        {
+            "text": "No one is claiming there there is no difference between men and women."
+        },
+        {
+            "text": "People naturally tend to classify things and people. A hypothetical no-gender society would not see its overall quality of life increase as people would always find ways to partition society."
+        },
+        {
+            "text": "The human mind functions by analogy and pattern recognition."
+        },
+        {
+            "text": "Lack or loss of gender would simplify society, but not make it better."
+        },
+        {
+            "text": "As a categorization of a spectrum, gender simplifies society rather than acknowledging the vastly complicated differences between individuals."
+        },
+        {
+            "text": "Some simplification is necessary for society to function."
+        },
+        {
+            "text": "This argument defends all arbitrary human categories including ones we know to be harmful, such as \"race.\""
+        },
+        {
+            "text": "Race is not \"known to be harmful\" in and of itself - racism is harmful."
+        },
+        {
+            "text": "The biological basis of race isn't arbitrary. Neither is gender."
+        },
+        {
+            "text": "The biological basis of race can [only](https://en.wikipedia.org/wiki/Race_and_genetics), at best, tell us what region someone's parents were most likely to have grown up in. (And any usefulness from it will decrease as technology allows 1)more mobility and 2)genetic testing for health risks)"
+        },
+        {
+            "text": "Historical attempts at [race biology](https://en.wikipedia.org/wiki/Scientific_racism) have proved untrue."
+        },
+        {
+            "text": "Race, like gender, [is a social construct](https://en.wikipedia.org/wiki/Race_(human_categorization)#Social_constructions)."
+        },
+        {
+            "text": "The observation that biological characteristics attributed to \"race\" come from population differences in genetic material is true. The qualitative and subjective judgements attached to those genetic markers is false."
+        },
+        {
+            "text": "Removing a problem is an improvement to the overall system regardless the existence of other problems. Those other ways to partition society are already there."
+        },
+        {
+            "text": "There is no clear mechanism through which the absence of gender constructs would improve the quality of life. While constructs harm some people, it is their enforcement, not their existence, which is harmful."
+        },
+        {
+            "text": "The absence of gender bias would mean people get [medical treatment](https://journalofethics.ama-assn.org/article/gender-stereotypes-pain-diagnosis/2008-07) congruent with their symptoms."
+        },
+        {
+            "text": "[Gender based bullying and harassment](https://www.niot.org/blog/gender-related-bullying-and-harassment-growing-trend) would disappear."
+        },
+        {
+            "text": "Society would not have to take the time, money, and effort to debate issues such as protected-class rights of LGBT persons, affirmative action for women, etc."
+        },
+        {
+            "text": "By considering gender as something which necessarily defines personality, society already is forcibly preventing naturally occurring expressions of identity."
+        },
+        {
+            "text": "As there are well-established norms about what it means to be a man or a woman, boys and girls are unable to discover an individual, personal identity, as they're pushed to conform to norms about what their presupposed gender is supposed to act like."
+        },
+        {
+            "text": "There is no science that shows that society created gender. People unhappy with their assigned gender generally choose some version of an existing gender, as if gender is innate."
+        },
+        {
+            "text": "Many countries [recognize](http://listverse.com/2018/10/03/10-societies-that-recognize-more-than-two-genders/) more genders just than male & female."
+        },
+        {
+            "text": "All of the linked examples define other genders in terms of male or female, rather than proposing new and unrelated gender states."
+        },
+        {
+            "text": "This is a result of translating the cultural practices with a word/concept outside our own into English."
+        },
+        {
+            "text": "This supports a gender spectrum, with bioloogical-and-social-affirming-male and biological-and-social-affirming-female as extremes. It does not negate multiple genders."
+        },
+        {
+            "text": "Creating more options for expression does not imply greater happiness. Often choice has the [opposite effect](https://deanyeong.com/paradox-of-choice/)."
+        },
+        {
+            "text": "This would only reduce the quality of life as it would enable assailants to enter gender neutral spaces (such as toilets, pregnancy wards, etc.) and cause discomfort or even violate the peace of mind of the people."
+        },
+        {
+            "text": "The existence of specific genders will limit the advancement of society in the future."
+        },
+        {
+            "text": "Genders might not work or make sense in a technological future with [transhumanism](https://www.kialo.com/transhumanism-is-the-next-step-in-human-evolution-13564) (genetic editing, cyborgs, and brain digitization)."
+        },
+        {
+            "text": "There is no reason why people would or should be forced to give up their gender identity upon becoming a cyborg."
+        },
+        {
+            "text": "People may be able to choose their own gender, a gender that doesn't even fit into what would be considered gender, or none at all. Limiting gender to a binary male/female circumstance would hinder progress towards a gender diverse world. This gender diverse world could lead to a genderless society, due to providing options for it. Without allowing people variety, the 'footing' for a genderless society may never take hold."
+        },
+        {
+            "text": "Promoting multiple new genders only further entrenches the idea of gender, not eliminate it."
+        },
+        {
+            "text": "In VR, people will be able to provide limitless body expression."
+        },
+        {
+            "text": "This is unrelated to to the existence of gender limiting future advancement."
+        },
+        {
+            "text": "As people step into the future, the binary of genders would stifle the will to engage in new technologies freely, as they are limited by what reality is right now: having genders."
+        },
+        {
+            "text": "People could create their own body with its own gender in VR."
+        },
+        {
+            "text": "If people say there's only two genders, then people won't pick up the VR and try to create their own - out of stigma."
+        },
+        {
+            "text": "When people stop thinking about genders, then they could be more creative and expand their imagination beyond what's in reality and start thinking about how people can be whatever gender (or no gender) they want."
+        },
+        {
+            "text": "To consider gender specificity as an inevitable hindrance to the progress of society is too bleak. Gender is source of human diversity / individuality."
+        },
+        {
+            "text": "Humans are driven to a large degree by their sex-impulse, their drive to reproduce and their desire will to leave a legacy for their children."
+        },
+        {
+            "text": "To threaten these basic instincts may leave the human drive (or spirit) limp and sterile; damning the future to a barren place."
+        },
+        {
+            "text": "Advancement is not necessarily always inherently good."
+        },
+        {
+            "text": "Charlie Chaplin's classic 1936 film, [Modern Times](https://www.youtube.com/watch?v=6n9ESFJTnHs), demonstrates that people living through the era of the greatest industrialization did not see industrialization as an unmitigated good."
+        },
+        {
+            "text": "The process of ridding society of gender would create tremendous discomfort and suffering by others."
+        },
+        {
+            "text": "To accomplish this would involve draconian measures and force by the state."
+        },
+        {
+            "text": "For example, mandating the use of intrusive medical treatments to curb biologically-based \"gendered\" tendencies of individuals."
+        },
+        {
+            "text": "Gender is an unnecessary social construction."
+        },
+        {
+            "text": "Gender and distinctions based on gender serve no purpose in business settings."
+        },
+        {
+            "text": "While gender may not have purpose in a business setting, this does not mean it has no purpose in society at large."
+        },
+        {
+            "text": "Focusing on gender conformity can cause people to not participate in business settings as easily as if they just forgot about gender and instead focus more on the business they're in. This would lead to better productivity."
+        },
+        {
+            "text": "Gender causes is detrimental to business at times, as there are too many sexual harassment scandals due to gender."
+        },
+        {
+            "text": "Gender creates confusion, as people need to follow invisible, at-times unwritten rules instead of becoming who they truly want to be."
+        },
+        {
+            "text": "Since we have the ability to function as a society without gender roles, gender only serves the purpose of dampening individuality."
+        },
+        {
+            "text": "The recent push for more genders and gender-fluidity suggests that these societal roles are not needed anymore to maintain a group of people."
+        },
+        {
+            "text": "Modern society allows for anybody to express themselves however they like (within the framework of the law, of course). To believe one is held back by one's birth-gender is therefore a fallacy, an imaginary obstacle contrived in one's own mind."
+        },
+        {
+            "text": "In present society, people's behaviour is often constrained by their gender."
+        },
+        {
+            "text": "Behavior is constrained by gender roles. Gender itself does very little to inhibit an individual with societal expectations, so gender is not a constraining force."
+        },
+        {
+            "text": "Transgender people don't seem to be constrained by their gender."
+        },
+        {
+            "text": "It is necessary for men and women to behave differently, particularly in extreme circumstances such as war. Men are usually physically stronger so it is logical for society to use them as soldiers."
+        },
+        {
+            "text": "Without gender you could actually pick the strongest of all, not only men."
+        },
+        {
+            "text": "People could dress, choose a partner, choose a career or pursue other goals regardless of their gender."
+        },
+        {
+            "text": "People can do all of these things already. Gender does not need to be redefined to make this possible."
+        },
+        {
+            "text": "A genderless society is a fake and ideological social construct. For the ideology to be successful, it would depend on imposing extreme and unnatural constraints on people who identify as male or female, and possibly even require the criminalisation of their gender identity."
+        },
+        {
+            "text": "People who identify as not their biological sex make up extremely small population segment. Why would it make sense to cater to one of the smallest groups possible?"
+        },
+        {
+            "text": "Liberal and Progressive ideals tend towards self sacrifice so that individuals outside of ones self can be considered. Consider affirmative action as being a program to help those that act as a minority of society."
+        },
+        {
+            "text": "People being free to express themselves may lead people to be happier."
+        },
+        {
+            "text": "People are free to express themselves already. Gender does not need to be redefined in order to have the freedom of expression."
+        },
+        {
+            "text": "Could just as easily lead to them being less happy"
+        },
+        {
+            "text": "The majority of people do not have gender dysphoria."
+        },
+        {
+            "text": "Cis-women do not have to experience gender dysphoria to be confused by the unwritten or contradictory messages (\"lady in the streets, whore in the sheets\") they get from society about how they should fulfill their gender role."
+        },
+        {
+            "text": "People rarely get confused by contradictory messages."
+        },
+        {
+            "text": "A gender's genetic characteristics cannot be simply ignored. This might be harmful."
+        },
+        {
+            "text": "That's sex, not gender."
+        },
+        {
+            "text": "What may be consider to be genetical \"gender traits\" is actually behaviorism."
+        },
+        {
+            "text": "Darwin's theory of biological evolution states \"that all species of organisms arise and develop through the natural selection of small, inherited variations that increase the individual's ability to compete, survive, and reproduce\". Thus socially gender must have an evolutionary basis of being created to assist us biologically."
+        },
+        {
+            "text": "Following that logic anything that persists must assist us biologically. That is not a good maxim to follow."
+        },
+        {
+            "text": "Nihilist dictators, Warmongering pseudo-democrats, gun toting child killers all persist but do not assist us biologically."
+        },
+        {
+            "text": "The contemporary existence of gender does not add value to our current society."
+        },
+        {
+            "text": "People waste resources conforming to gender stereotypes for no real purpose."
+        },
+        {
+            "text": "Some men might feel adrift without the societal pressure to provide."
+        },
+        {
+            "text": "There has never been a society in the whole history of human existence that did not instantly develop this \"construction\". It's prevalence and universality suggest a deeper origin than mere socialization."
+        },
+        {
+            "text": "If gender is a social construct, the evidence for it will be seen through social sciences and should be considered independent from natal sex until further social movements can be seen as the idea gains momentum. In this scenario we might see that previous mixed genders were a rare or exclusive event of not having the knowledge that gender is entirely socially constructed."
+        },
+        {
+            "text": "Gender is an outdated concept. In the past, gender enabled society to perpetuate itself by ensuring men and women paired, but that is no longer necessary to produce offspring."
+        },
+        {
+            "text": "In the future, [artificial wombs](https://en.wikipedia.org/wiki/Artificial_uterus) might give people the option of becoming parents without anyone going through the health risks associated with pregnancy and birth."
+        },
+        {
+            "text": "Female to male transgender persons [can already](https://en.wikipedia.org/wiki/Thomas_Beatie) become pregnant and bear offspring."
+        },
+        {
+            "text": "Male to female transgender persons [may soon](https://obgyn.onlinelibrary.wiley.com/doi/full/10.1111/1471-0528.15438) be able to receive transplants that allow them to become pregnant and bear children."
+        },
+        {
+            "text": "Those transplanted organs will be genetically female, not transgender."
+        },
+        {
+            "text": "Artificial insemination allows us to circumvent traditional requirements for creating babies."
+        },
+        {
+            "text": "Artificial insemination still requires a male and female."
+        },
+        {
+            "text": "Artificial insemination requires sperm and egg. Sperm-production and egg-production are not dependent on gender."
+        },
+        {
+            "text": "But they are dependant on sex, and a society without gender makes it very hard to tell who has sperm to donate."
+        },
+        {
+            "text": "While human artificial insemination currently requires male and female material, healthy [mice have been produced using only female materials](https://www.sciencealert.com/genomic-imprinting-silenced-in-haploid-stem-cells-produces-fatherless-mice), so this technique might be used on humans in the future."
+        },
+        {
+            "text": "A baby can genetically have more [than two parents](http://time.com/5569057/three-parent-baby-dna/)."
+        },
+        {
+            "text": "Not under current ethics laws."
+        },
+        {
+            "text": "The laboratories that supply artificial reproduction do not have the capacity to replace natural means in a society."
+        },
+        {
+            "text": "As with [Yin and Yang](http://mindkey.me/yin-yang-masculine-feminine/), some philosophers and religions believe gender is an inherent expression of the nature of the universe."
+        },
+        {
+            "text": "Gender-neutral language is often much more useful and applicable"
+        },
+        {
+            "text": "Sex is natural, but gender is not. It is given and judged, a lot of problems like sexism and misinterpreted social gender roles are applied. Therefore, if we manage to remove gender, it is assured that our world would improve"
+        },
+        {
+            "text": "Childrens prejudices on gender grow as they get older, as they get socially constructed over time by their environment.[A Meta\u2010analysis of 5 Decades of U.S. Draw\u2010A\u2010Scientist Studies](https://onlinelibrary.wiley.com/doi/full/10.1111/cdev.13039)"
+        },
+        {
+            "text": "There is a difference between gender and biological sex."
+        },
+        {
+            "text": "Only in terms of individual perception of ones self. To literally any third party, you are male or female in their perception/society's"
+        },
+        {
+            "text": "Gender is a natural phenomenon that society has hijacked in the form of gender roles. Internal ideas on gender are rebellion against the gender roles given in society, not a rebellion against gender."
+        },
+        {
+            "text": "Imagine interacting with someone only via phone or email-- the person has an androgynous name like \"Sam\" and their voice is not particularly high or low. In today's world, it is fully possible to conduct a business relationship without knowing/caring whether someone is male or female."
+        },
+        {
+            "text": "The example only works because technology is disguising the speaker. It is an abstracted interaction."
+        },
+        {
+            "text": "The technology only blinds the speaker's sight. Presumably \"literally any third party\" includes persons who are blind."
+        },
+        {
+            "text": "Blind people can tell sex differences in person. Unlike telephones, which limit even auditory information, sex differences engage all the senses."
+        },
+        {
+            "text": "Androgynous people may appear to be either male or female, [depending on context](https://en.wikipedia.org/wiki/Andreja_Peji%C4%87)."
+        },
+        {
+            "text": "\"Androgyny\" is not a biological state but a subjective and relative judgement. It is also fairly rarely seen, not impacting the usual level of obvious sexual dimorphism that human beings physically exhibit."
+        },
+        {
+            "text": "The first sentence is irrelevant. No one said \"androgyny\" was a biological state."
+        },
+        {
+            "text": "The second sentence is irrelevant. The rarity of people described as androgynous is not relevant. What matters is that a situation exists in which \"To literally any third party, you are male or female in their perception/society's\" is false."
+        },
+        {
+            "text": "There [isn't](https://www.merriam-webster.com/dictionary/gender). Gender and sex vary almost completely dependently with one another."
+        },
+        {
+            "text": "In most of the cases it is. Transgenders are just exceptions. We should respect them, and help where nessecery. But exceptions do not form the rule"
+        },
+        {
+            "text": "\"Sex\" tends to relate to biological differences, [while](https://www.medicalnewstoday.com/articles/232363.php) \"gender\" tends to denote the social and cultural role of each sex within a given society."
+        },
+        {
+            "text": "No one is born or genetically programmed to like blue, or not wear a dress. The only reason these ideas exists is because they have been socially constructed."
+        },
+        {
+            "text": "This [study](https://onlinelibrary.wiley.com/doi/abs/10.1002/icd.1986) shows that infants have preferences for certain 'gendered' toys"
+        },
+        {
+            "text": "No one is born or genetically programmed to like to play at child care or with construction toys. The only reason these ideas exist is because they have been socially constructed."
+        },
+        {
+            "text": "Gender differences in toy choice [exist](https://onlinelibrary.wiley.com/doi/abs/10.1002/icd.2064) and appear to be the product of both innate and social forces."
+        },
+        {
+            "text": "The attribution of colors, such as \"blue for boys, pink for girls\", has [changed over time and is influenced by forces such as art and marketing](https://www.cnn.com/2018/01/12/health/colorscope-pink-boy-girl-gender/index.html). This points to it being cultural, not biological."
+        },
+        {
+            "text": "Outside Western cultures, men's clothing commonly [includes](https://en.wikipedia.org/wiki/Men%27s_skirts) skirts and skirt-like garments, but in Europe and North America, wearing of a skirt is seen as typical for women, not men."
+        },
+        {
+            "text": "This is because the skirt is not gendered, but the choice to wear it in preference to the opposite gender's clothing is."
+        },
+        {
+            "text": "Social evolution and development is not less vital a part of us and our makeup than our biological evolution and development. The two interact together, and bolster/define one another. Separating one from another is like determining what \"part\" of a wonderful meal is the ingredients and what \"part\" is the recipe and process."
+        },
+        {
+            "text": "This is irrelevant to the question of whether a society with no gender would be better."
+        },
+        {
+            "text": "In [most of the rest of the Animal kingdom](https://www.goodreads.com/book/show/39397756-animal-behavior), gendered behavior seems fairly clear, divergent, and predictable between populations of animals, based upon the biological sex of the animal(s), even when raised or reared without contact with other communities of the same species."
+        },
+        {
+            "text": "Many Fathers in the Animal Kingdom play child rearing roles. Many Mothers play Hunter or Combat roles. Many Males are the ones who have stand-out colouring while the female is more drab."
+        },
+        {
+            "text": "Gender is indeed a social construction, but the effects can still be positive and desirable for the common good."
+        },
+        {
+            "text": "We as humans can choose to express ourselves in many ways without denigrating others. Just think how much music and other culture we would lose without gender-based romanticism."
+        },
+        {
+            "text": "A society with no stereotypes, roles, or discrimination based on gender would be better. This is an important distinction: it is not gender itself that is a problem, but our attitude towards it."
+        },
+        {
+            "text": "This is true, but this is why a society without gender wouldn't be better, but a society without gender roles(society's synthetic embodiment of gender, or the stereotypes, roles and discrimination associated with gender) would be."
+        },
+        {
+            "text": "The concept of gender cannot be disassociated from the concept of gender roles."
+        },
+        {
+            "text": "Gender is constructed upon the perceptions that other people have of us"
+        },
+        {
+            "text": "Gender roles are not inherently bad. It is when gender roles are enforced that there is an issue."
+        },
+        {
+            "text": "Society with no stereotypes or roles can cause problems with cognition-in the areas of organization, categirization, thinking, and memory. [opentextbc.ca](https://opentextbc.ca/socialpsychology/chapter/social-categorization-and-stereotyping/)"
+        },
+        {
+            "text": "A society without stereotypes can result in [anomie](https://www.britannica.com/topic/anomie)."
+        },
+        {
+            "text": "Anomie is more about society providing its members with purpose, ideals, values, and goals. Removing gender does not necessarily remove those."
+        },
+        {
+            "text": "A society without a fixation on gender or an acceptance that gender can be a spectrum for some individuals, would be better, but not necessarily a society without gender."
+        },
+        {
+            "text": "A free society is a better society because individuals can choose to live how they please without forcing it on others."
+        },
+        {
+            "text": "Removing the freedom to embrace gender is another form of inhibiting freedom"
+        },
+        {
+            "text": "Living how you please without forcing it on others is not an option for many non-binary or trans people; in most places we consider 'free,' a lifestyle is forced upon them."
+        },
+        {
+            "text": "That isn't the fault of \"gender\"."
+        },
+        {
+            "text": "The concept of gender here means gender as a social construct; gender as a fixation on physical sex."
+        },
+        {
+            "text": "Gender is not just a social construct. Simply declaring it so isn't making it so."
+        },
+        {
+            "text": "There has never been a genderless society."
+        },
+        {
+            "text": "Gender roles are analogous to things like the difference between nobles and commoners. They are an oppressive construct that has to be done away with."
+        },
+        {
+            "text": "Historically, people moved between economic groups - even during the most rigidly enforced periods. Moving between genders is different because of the innate biological sex element of gender."
+        },
+        {
+            "text": "Abolshing gender roles does not imply abolishing biological sex."
+        },
+        {
+            "text": "Gender steretypes reflect [underlying neurological differences between men and women](https://www.sciencedaily.com/releases/2018/11/181112191650.htm)."
+        },
+        {
+            "text": "It is better to update the gender stereotypes to better reflect reality, and to ensure people understand that stereotypes reflect a greater likelihood and not a certainty, than it is to pretend there are no meaningful differences between males and females."
+        },
+        {
+            "text": "Recognizing neurological influence on gender expression would allow society to recognize that [male to female transgender people have neurological similarities to ciswomen](https://en.wikipedia.org/wiki/Neuroscience_of_sex_differences#Transsexual_studies_on_brain_anatomy)."
+        },
+        {
+            "text": "Society already recognizes those similarities, and has used feminine or masculine language to describe gay and trans people for generations, usually in the pejorative."
+        },
+        {
+            "text": "A society without gender would be unable to recognize and gender similarities."
+        },
+        {
+            "text": "In the case of neurology, this would be positive, because it would mean more individualized and accurate medical care."
+        },
+        {
+            "text": "Gender stereotypes [cause](https://www.theguardian.com/world/2010/aug/15/girls-boys-think-same-way) those neurological differences between men and women."
+        },
+        {
+            "text": "Gender stereotypes also cause women to have breasts. Gender stereotypes cause everything."
+        },
+        {
+            "text": "[No](https://www.sciencedirect.com/science/article/pii/S0163638300000321)[they](https://psycnet.apa.org/record/1995-24654-001)[don't](https://insights.ovid.com/crossref?an=00001756-200607310-00017),"
+        },
+        {
+            "text": "Individuals often link gender with identity. What needs to be challenged is the roles tied to gender, not the identify. It is human nature to classify things (behaviourist theory), and gender will always be one of those things we classify people by."
+        },
+        {
+            "text": "It is our sex that is a part of our identity. Not the gender. Gender is if anything society's categorization of you and too limiting. Sex on the other hand does not not enforce stereotypes. Sex is just biology."
+        },
+        {
+            "text": "A society with no sex role stereotypes would be better. Many people, like myself, don't hate our physical sex, but do hate our gender roles. I want to be a woman not because of my biological sex but because of the gender associations that come with being a woman. Gender allows people to express their inner self even in spite of their sex. A world without FORCED gender roles would be better. A world without gender though, would leave people, especially like myself in a sort of limbo."
+        },
+        {
+            "text": "Any sort of \"limbo\" would only last until a generation who had never known gender roles took over."
+        },
+        {
+            "text": "People have books and media that show the previous social states."
+        },
+        {
+            "text": "Society recognizes when a social practice is \"antiquated\". For example, we read books about kings, even when we no longer live under monarchy. This does not prompt us to overthrow democracy in order to re-establish monarchy."
+        },
+        {
+            "text": "But it means that we do not lose recognition of previous social structures to the point that they have no influence."
+        },
+        {
+            "text": "yes, but when we say no stereotypes, rules, or discrimination, this shouldn't just mean no gender roles. This should also mean a society with more than two genders; not just masculine girls and feminine boys but non-binary, genderqueer, genderfluid people, too. I think it would be better to have a society with gender, but without limits."
+        },
+        {
+            "text": "While people do think differently and have their own experiences, humans are different than each on such a biological scale that we can't just forget all those differences. Plus even with those difference taking that out would make echo chambers. Differences in each other are important, avoiding conflict through understanding is created through the difference once we understand them."
+        },
+        {
+            "text": "Gender itself is important to many individuals. I believe in more than two genders. I feel that gender roles and stereotypes are very toxic, yet gender is important."
+        },
+        {
+            "text": "Regardless of what is said men and women are born with different traits. Trying to eliminate gender would just cause man and women to suppress their traits."
+        },
+        {
+            "text": "Men are built stronger than women so they're responsible for hard work and fighting."
+        },
+        {
+            "text": "Women are better build for caring for children and they are generally more caring than men."
+        },
+        {
+            "text": "If what we truly value are preserving the traits, sex/gender should not matter. (Eg: We think strong is a trait that makes someone a hard worker or a good fighter. If a woman is particularly strong, she should also do hard work and fighting.) We should measure people on their traits rather than their sex."
+        },
+        {
+            "text": "The tendency to stereotype is [biologically hardwired](https://www.psychologytoday.com/us/blog/insight-therapy/201809/stereotype-accuracy-displeasing-truth), so it's nearly impossible to have a society that does not have any stereotypes. Only stereotypes [combined with prejudice](https://opentextbc.ca/socialpsychology/chapter/social-categorization-and-stereotyping/) are harmful."
+        },
+        {
+            "text": "Gender is not just about whether discrimination occurs. If there was no gender, people could not discriminate"
+        },
+        {
+            "text": "Gender is an important tool for social organisation."
+        },
+        {
+            "text": "And more importantly, for biological organisation."
+        },
+        {
+            "text": "Gender makes human courtship, which is a major component of human culture and society, easier and therefore more accessible."
+        },
+        {
+            "text": "Gender is a a way of streamlining social interactions, mostly those of a reproductive and child-rearing nature."
+        },
+        {
+            "text": "The evolution of reproduction will make gender obsolete."
+        },
+        {
+            "text": "Asexual reproduction evolved into sexual reproduction."
+        },
+        {
+            "text": "Many lifeforms still reproduce asexually. This is a transposition of generalized values onto evolution, and a false assumption of how evolution works."
+        },
+        {
+            "text": "For example, just because humans no longer have tails does not mean that tails are 'wrong' or 'inferior'."
+        },
+        {
+            "text": "The progressive improvement of lifeforms over time is an oversimplification of evolution that is [not accepted](https://theskepticalteenager.wordpress.com/2012/04/23/the-myth-of-the-evolutionary-ladder/) by modern scientists."
+        },
+        {
+            "text": "The quoted article includes this statement, unchallenged. 'Humans are not really very good from an evolution viewpoint, which is why the evolutionary ladder should be either turned upside down, or morph into a branching tree, with each of today's organism perched at the top of the tree ' That is progression."
+        },
+        {
+            "text": "In evolution, adaptations only evolve *from* something, not *into* something. Biology is not Pokemon."
+        },
+        {
+            "text": "Humanity has not undergone and is not undergoing any significant evolution. Reproduction is not evolving."
+        },
+        {
+            "text": "It is evolving through technology, not biology."
+        },
+        {
+            "text": "Reproductive evolution had a great deal of [influence](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4305164/), both on the change from primates to archaic humans, and in the change from archaic to modern humans."
+        },
+        {
+            "text": "And stopped with modern humans."
+        },
+        {
+            "text": "Evolution [does not stop](https://www.pbs.org/wgbh/evolution/library/faq/cat05.html). Every population of living organisms is undergoing some sort of evolution."
+        },
+        {
+            "text": "Evolution depends on selective pressures that influence the likelihood that one will have children and those children will live to reproduce. These can involve cultural choices that make certain individuals more likely to be selected by mates. They also involve technological interventions in health."
+        },
+        {
+            "text": "An example of this: If Western culture norms tell us that skinny females are desirable, this mean skinny women are more likely to reproduce. However, skinny women are also more likely to have small birth-canals that a baby's head cannot fit through. This means they are less likely to reproduce. Technology allows C-sections, which makes birth-canal size less influential in the likelihood of reproduction."
+        },
+        {
+            "text": "If gender is removed but we can continue to reproduce, we will continue to evolve. We will just have selective pressures that do not depend on gender."
+        },
+        {
+            "text": "We are not currently evolving genetically and making a social change will not change access to reproduction that controls evolutionary change."
+        },
+        {
+            "text": "This was already addressed above. See \"Evolution does not stop.\""
+        },
+        {
+            "text": "And it is still wrong to claim individual human beings are undergoing natural selection."
+        },
+        {
+            "text": "In most human societies, no one has any trouble getting selected for mating. Humans pursue sex for pleaure, frequently outside the bounds of commitment."
+        },
+        {
+            "text": "\"Survival of the fittest\" stops when fitness is no longer a prerequisite to successfully reproduce. Vaccines, communal distribution of goods, prosthetics and medical intervention assure that fitness is countered."
+        },
+        {
+            "text": "\"Survival of the fittest\" does not stop. It's just that factors influencing \"fitness\" are constantly changing. Currently, ability to access vaccines, medical intervention, etc becomes a measure of fitness. If nuclear winter occurred tomorrow, other factors such as warmth, shelter, access to food, etc would become more important factors of \"fitness\"."
+        },
+        {
+            "text": "The factors that control access to medicine and goods for humans are social, not biological. No one's genes make them more likely to receive insulin."
+        },
+        {
+            "text": "Both social and biological factors are relevant to fitness. Social factors usually depend on unconscious-perceptions of biological fitness, but those perceptions may be wrong. (The male [bowerbird](http://www.bbc.com/earth/story/20141119-the-barmy-courtship-of-bowerbirds) decorates his nest with shiny objects. Unconsciously, the female recognizes this as indicative of his ability to find/provide other objects like food. But if his biology just happens to make him like shiny things, while he is bad at finding food, this is a poor choice.)"
+        },
+        {
+            "text": "Examples of animal reproduction behavior have nothing to do with human beings that commonly reproduce despite poor competitiveness."
+        },
+        {
+            "text": "Likewise, a male human might project \"fitness\" by adorning himself in objects that indicate he can provide for a mate (fancy car, expensive watch, etc). Unconsciously, a female recognizes this as indicative of his ability to provide (food, stability, medical care) for her and potential offspring."
+        },
+        {
+            "text": "Poor, unadorned and unhealthy human beings have no trouble finding mates."
+        },
+        {
+            "text": "Biological factors can influence social factors. If someone's brain predisposes them to be an extrovert, they are more likely to make many friends. When they need insulin, the ability to appeal to many friends for aid is \"fitness\"."
+        },
+        {
+            "text": "Medical services are provided regardless of social fitness, and social fitness is not tied to need for services."
+        },
+        {
+            "text": "It doesn't matter if sociologists and some psychologists don't consider society or other social influences as described by biology and evolution. Anything that effects evolution is part of the consideration of biology, even if the influences' effects aren't considered biological in themselves."
+        },
+        {
+            "text": "\"Vaccines, communal distribution of goods, prosthetics, and medical intervention\" are environmental effects introduced by society which modify how organisms evolve. There's no reason to assume 'stoppage' of evolutionary processes."
+        },
+        {
+            "text": "Those \"modifications\" have been so total as to effectively make the criteria for survival and reproduction have no connection to biological measures of fitness - or any other measures of fitness. Human reproduction has no selection pressures and is unlimited in size."
+        },
+        {
+            "text": "Vaccines have not cured all diseases, communal distribution of goods does not reach all people, not everyone can afford or access prosthetic and medical care."
+        },
+        {
+            "text": "None of which affect groups delineated by common genes, placing those genes at risk of being selected against."
+        },
+        {
+            "text": "\"Vaccines, communal distribution of goods, prosthetics, and medical intervention assure that fitness is countered\" do not address and ameliorate all conditions which correspond to natural or sexual selection."
+        },
+        {
+            "text": "All conditions that humans are exposed to are immaterial to whether the gross population remains in conditions that preserve all the gene lines against de-selection."
+        },
+        {
+            "text": "Technological reproduction will make biological reproduction obsolete."
+        },
+        {
+            "text": "The availability of these technologies does not mean biological reproduction obsolete. They do not have to be, and are not inherently in opposition to one another as many people do not want to use technology to have children unless necessary."
+        },
+        {
+            "text": "As gender and reproduction is still useful for society today, hypothetical future evolutions are no argument against maintaining the use of gender today."
+        },
+        {
+            "text": "Many women desire pregnancy as much as they desire to bear offspring."
+        },
+        {
+            "text": "Some mothers consider the process of pregnancy (or gestation) a gift and a virtue, and they even miss it when it is over."
+        },
+        {
+            "text": "Disregarding the fertile woman's instincts will leave a cold, bleak society."
+        },
+        {
+            "text": "But there's also the opposite. Many women that do not want or desire to bear offspring. For no other reason than pure choice."
+        },
+        {
+            "text": "The parent claim does not have to mean that fertile cis-women will be unable to be pregnant or bear offspring."
+        },
+        {
+            "text": "While new avenues of reproduction are available, these are expensive."
+        },
+        {
+            "text": "Even in a hypothetical future where these are cheap and easy, sexual reproduction is almost always going to be cheaper, and it is certainly more fun."
+        },
+        {
+            "text": "Genders have always divided people since the beginning of civilization. A society with no gender would be fairer, and technological advancements will free us from the biological need of having two genders."
+        },
+        {
+            "text": "The world population is growing faster than production and resource availability (in a sustainable matter) is growing. Not growing the world population further, would benefit life quality, the environment and animal rights."
+        },
+        {
+            "text": "The trick isn't in ceasing to reproduce, it's to limit the levels at which it occurs, to replace elder generations, not to \"boom\" the growth of the new. No reproduction would mean the end of society in a few generations, or more radically, extinction."
+        },
+        {
+            "text": "This is conflating Gender with Sex The American Indians allowed more than 2 genders as did the Asian Indians. Nobody has suggested they reproduced any differently than anybody else. [www.huffpost.com](https://www.huffpost.com/entry/the-history-of-indias-third-gender-movement_b_58334db5e4b099512f841fd0?guccounter=1&guce_referrer=aHR0cHM6Ly93d3cuYmluZy5jb20vc2VhcmNoP3E9aG93K21hbnkrZ2VuZGVycytJbmRpYStJbmRpYW5zJmdvPVNlYXJjaCZxcz1kcyZmb3JtPVFCUkU&guce_referrer_sig=AQAAANflZLoHEhQq0ic2X7pt6tYZRAQ-zDnYL2btR8xKgdxFRvQ-sWYWty1NxAnW_WU8el8UFQwLGSq9pVu5FJwNT2QKkFCNv2GzTugwXVmettogbLhwPlHmLXsxFBEwgAHNGSfF_ObVygEPM-VkYHN8YddgYvLX_Mf83IUln2DK3CaI) and [sexinfo.soc.ucsb.edu](https://sexinfo.soc.ucsb.edu/article/third-gender-native-american-tribes)"
+        },
+        {
+            "text": "There are other more productive means of social organization, such as one's social role or one's mastered set of skills."
+        },
+        {
+            "text": "Skill sets and social roles are determined primarily by gender."
+        },
+        {
+            "text": "Men embody abundance, and women embody scarcity, on a biological level: Men don't menstruate and have unlimited sperm, women have limited eggs and long pregnancies. Embracing these differences on a mental level allows us to understand each other better and function better as a society."
+        },
+        {
+            "text": "Tools of social organization are really tools of social control."
+        },
+        {
+            "text": "Control is not necessarily a bad thing."
+        },
+        {
+            "text": "Gender driven incentives motivate individuals to participate in development of society."
+        },
+        {
+            "text": "Removing the idea of gender completely probably wouldn't work, as applying labels to these types ideas makes the concepts easier to understand, and provides structure and clarity, two very sought after things."
+        },
+        {
+            "text": "Socialization is based on education and distinction between differences and dealing with them, no gender means bringing up confusion and losse"
+        },
+        {
+            "text": "With no genders, we would have serious consquences in the way things are organized. It would change our current understandings and delimitations in sports, for an example. Women have to compete with women and men have to compete with men, due to physical biological differences, inherent to each gender. It just wouldn't be fair. I can't see a way society will organize itself and live peacefully with a \"no gender scenario\"."
+        },
+        {
+            "text": "Thats just one example. You saying this would affect all of society and sighting one example. This argument format doesn't work"
+        },
+        {
+            "text": "The separation in sports depends on sex, not gender. The problem is the amount of testosterone, which depends on the body's nature and cannot be measured. This is very different from the more psychological and social gender."
+        },
+        {
+            "text": "Many conservative value sets were considered essential to keep society working, but when these were changed, societies did not collapse."
+        },
+        {
+            "text": "Homosexuality was forbidden, once allowed, nothing bad happened."
+        },
+        {
+            "text": "Patently false statement filled with assumptions. When was it \"allowed\"? When was it \"forbidden?\" NOTHING bad happened? AIDS epidemic..."
+        },
+        {
+            "text": "Women were not allowed to vote or study. When this was changed, the world did not collapse."
+        },
+        {
+            "text": "The fact society changed and didn't collapse because certain values changed, doesn't mean it wont if different values change."
+        },
+        {
+            "text": "There are no reasons to suspect that society would collapse if we start seeing each other as humans, and not as a specific gender."
+        },
+        {
+            "text": "We don't see people as their gender we see them as people."
+        },
+        {
+            "text": "\"Essential to keep society working\" and \"an intrinsic part of humanity\" are two quite distinct claims. Getting rid of an intrinsic part of humanity is impossible regardless of what the societal consequences of its removal would hypothetically be."
+        },
+        {
+            "text": "As [humans are social animals](http://factmyth.com/factoids/humans-are-hardwired-to-be-social-beings/), and essential/intrinsic are synonyms, these are not distinct claims. \"Many conservative value sets were once considered intrinsic to humans, but were not\" would have the same meaning."
+        },
+        {
+            "text": "The grandparent claim makes a reasonable distinction between innateness and \"thought to be essential\" that are clearly not synonymous."
+        },
+        {
+            "text": "\"When they were changed, society did not collapse\" suggests that the mere fact that it was possible to change these things did not surprise even the conservatives."
+        },
+        {
+            "text": "Capitalism was considered essential to keep society working. When certain countries attempted to change this, [bad things happened](https://en.wikipedia.org/wiki/Mass_killings_under_communist_regimes)."
+        },
+        {
+            "text": "Gender is not a value set. It is a fundamental biological fact of life. How individuals choose to deal with it is a separate issue and should not be used to create an artificial reality."
+        },
+        {
+            "text": "Divorcing gender identity from our biological reality is a dangerous indulgence that weakens social cohesion and serves no practical purpose."
+        },
+        {
+            "text": "Surely being supportive of individuals gender identity and expression is of great practical use; a more accepting society would create less stigma surrounding gender, thus improving the mental health of fellow human beings."
+        },
+        {
+            "text": "This improvement in mental help for a prominent group, such as those who's gender identity and expression does not directly correlate to their assigned sex at birth, would create savings for the healthcare system."
+        },
+        {
+            "text": "The assumption that mental health is a consequence of expressing gender identity is felacious and self-serving. Gender is gender, it is what it is and claims of identity should not be used to excuse personal lack of resilience and self-reliance."
+        },
+        {
+            "text": "Using chosen names [reduces](https://news.utexas.edu/2018/03/30/name-use-matters-for-transgender-youths-mental-health/) odds of depression and suicide in transgender youths."
+        },
+        {
+            "text": "Women would be encouraged or expected to do things that they physically cannot do."
+        },
+        {
+            "text": "Women may be expected to compete against men in sport."
+        },
+        {
+            "text": "Women may be expected to engage in physical work that requires the strength of a typical man rather than a typical woman."
+        },
+        {
+            "text": "Tools for social organisation are important to ensure social cohesion and that society functions effectively."
+        },
+        {
+            "text": "Sex, or perceived sex, can fill that role."
+        },
+        {
+            "text": "\"Perceived sex\" has a name - we call it \"gender\"."
+        },
+        {
+            "text": "Sex and Gender do not vary independently \u2013 rather, there is a very close link between the two with very few exceptions."
+        },
+        {
+            "text": "The costs and benefits that might result from eliminating gender from society aren't clear."
+        },
+        {
+            "text": "Gender is not a choice but a biological state that cannot be changed."
+        },
+        {
+            "text": "A boy is a boy and a girl is a girl no matter what. This shouldn't be political. If our have a vagina, you are a woman and if you have a penis, you are a man."
+        },
+        {
+            "text": "Some people are born [with](https://en.wikipedia.org/wiki/Intersex) both a vagina and penis, or neither."
+        },
+        {
+            "text": "For many years scientists and medical professionals have defined gender and sex as two distinct concepts, definitions of sex and gender can be found [here.](https://www.who.int/gender-equity-rights/knowledge/glossary/en/)"
+        },
+        {
+            "text": "A man castrated is still a man."
+        },
+        {
+            "text": "The politicization of gender only moves us further towards a post-truth society."
+        },
+        {
+            "text": "A society based on perception, rather than reality, will become disconnected from the fundamentals of society and eventually die."
+        },
+        {
+            "text": "Gender and biology are inextricably interconnected."
+        },
+        {
+            "text": "The concept of gender came from the reality of biology."
+        },
+        {
+            "text": "Regardless of what might be better, there is no viable way for gender to go away. We can all easily detect signs of biological sex in other people"
+        },
+        {
+            "text": "Regardless of what gender a person wants to present as, other people will be able to determine their sex. People will then mentally assign them a gender in any case."
+        },
+        {
+            "text": "This is false. Sex and gender have different definitions. There are also more than two sexes, such as intersex, beyond male and female."
+        },
+        {
+            "text": "This is false. People overwhelmingly choose binary gender identities, even when they are at odds with the biological sex or their biological sex is ambiguous. Gender appears to be innate."
+        },
+        {
+            "text": "Overwhelmingly choosing something does not imply that thing is innate."
+        },
+        {
+            "text": "It certainly does strongly imply that it is innate, it just doesn't prove it."
+        },
+        {
+            "text": "An overwhelming number of Americans choose to drive cars. This does not strongly imply that car-driving is innate."
+        },
+        {
+            "text": "Driving cars isn't gendered behavior."
+        },
+        {
+            "text": "People generally choose the option that is easiest for them. What they perceive to be easiest is influenced by many factors, including social pressures."
+        },
+        {
+            "text": "Or sometimes it isn't much of a choice but an expression of an innate quality. The fact that some choices aren't innate doesn't change that."
+        },
+        {
+            "text": "If it's an expression of an innate quality, it is not a choice."
+        },
+        {
+            "text": "This is because there are social pressures to choose 1 of 2 genders."
+        },
+        {
+            "text": "Dimorphic behavior along sex lines is common throughout the animal kingdom, including among animals that have no socialization."
+        },
+        {
+            "text": "\"Biological sex\" vs \"Gender expression\" is a better distinction because the definitions appear to be intertwined. [Gender](https://www.etymonline.com/word/gender#etymonline_v_1349) - 'The \"male-or-female sex\" sense is attested in English from early 15c. As sex (n.) took on erotic qualities in 20c., gender came to be the usual English word for \"sex of a human being,\"' [Sex](https://www.etymonline.com/search?q=sex) - 'a sex, state of being either male or female, gender,\" of uncertain origin. \"Commonly taken with seco as division or 'half' of the race.'"
+        },
+        {
+            "text": "Gender is both what we think of ourselves and what role we appear to occupy in society. Without the mirror of society, there could be no gender. Therefore, the gender we project, deliberately or not, matters in how we will be treated. Biological sex is one of the gender markers we project."
+        },
+        {
+            "text": "Our role in society is dependent on others. However, role depends on many factors and we can choose to project or not project any of these factors. Someone can choose not to project their gender, their income, their parental status, etc."
+        },
+        {
+            "text": "While people might mentally assign others a gender, they are not always able to correctly determine a person's sex. This is where the derogatory term \"[trap](https://www.urbandictionary.com/define.php?term=Trap)\" comes from."
+        },
+        {
+            "text": "The term \"trap\", while popular for labeling a type of porn, is not a description of a common social interaction between cis and trans people."
+        },
+        {
+            "text": "\"Sex\" and \"Gender\" are not interchangable. Sex is the identification of biological traits that identify you as male or female. Gender is the identification of social constructs that identify you as male or female."
+        },
+        {
+            "text": "Gender is the choice most everyone makes for themselves and others, and that choice doesn't include \"none\"."
+        },
+        {
+            "text": "\"An [agender](https://en.wikipedia.org/wiki/Genderqueer#Definitions_and_identity) person ('a-' meaning \"without\"), also called genderless, genderfree, non-gendered, or ungendered, is someone who identifies as having no gender or being without a gender identity.\""
+        },
+        {
+            "text": "Gender is a system of values and ideas attached to descriptions of objective phenomena."
+        },
+        {
+            "text": "There's no possible objectivity in the human mind"
+        },
+        {
+            "text": "An individual can choose to change their gender expression. To those perceiving them, this is effectively a choice to change their gender."
+        },
+        {
+            "text": "A lot of hate is generated by the first incomprehension surrounding \"un-natural\" gender expressions."
+        },
+        {
+            "text": "Gender is a societal construct. Not biology. Sex is biology. Sex is indeed not a choice, but a biological state that cannot be changed."
+        },
+        {
+            "text": "Gender is something that is determined while you are still a fetus. If a man really wishes to be a women, they can think whatever they please. However, it doesn't change the fact that they are still a man and saying that society would be better without gender is stupid."
+        },
+        {
+            "text": "A society with no gender stereotypes but one that allows sex discrimination when necessary-such as in medicinal and sporting contexts-would be better."
+        },
+        {
+            "text": "Defining gender as stereotypes is illogical, as gender is [influenced](https://stanmed.stanford.edu/2017spring/how-mens-and-womens-brains-are-different.html) in many ways by genetics."
+        },
+        {
+            "text": "Genetic and body chemistry influences on gender are only part of the nature of gender. Gender also has a pronounced social nature which can vary between societies, prescribing that gender is not immutable as a genetic argument might imply."
+        },
+        {
+            "text": "Genetic influence on gender does not prescribe that all people behave in a gender-archetypal manner. If there is no genetic rule for gender archetypes, there should be no societal expectations of gender."
+        },
+        {
+            "text": "Taking individuals into account, for example, some women may not have \"motherly\" behavior and some men may not have \"provider\" tendencies."
+        },
+        {
+            "text": "Gay and lesbian people have been recorded as having similar brain chemistry and structure to their opposite sex. If genetic disposition toward gender isn't always normative, neither should societal expectations be normative. If any combination of gender features is possible, gender expectations should not exist at all."
+        },
+        {
+            "text": "This point is a better argument for recognizing more than two genders, not failing to recognize any."
+        },
+        {
+            "text": "Gender stereotypes are in many ways defined by genetics"
+        },
+        {
+            "text": "Biological and physical differences between males and females should be recognised in medicine, sports, and in order for procreation to occur etc. and there should not be any assumptions about people's personality traits because of their gender."
+        },
+        {
+            "text": "A society that reaches the point of eradicating gender is nothing short of a totalitarianist catastrophe, as such a change would suppress some of the most [instinctive](https://www.str.org/blog/you-can%E2%80%99t-erase-gender-but-you-can-sure-try#.XM-qqo5Kh3g) aspects of humanity, and would thus require extreme control over the people by the government."
+        },
+        {
+            "text": "This claim assumes the means by which 'no gender' is reached as a society."
+        },
+        {
+            "text": "\"No gender\" could be reached by the progressive agreement of individuals in a society. This state doesn't have to be forced upon them by the government."
+        },
+        {
+            "text": "Gender is an intrinsic part of humanity and cannot be removed."
+        },
+        {
+            "text": "The process of eliminating gender could be highly unjust."
+        },
+        {
+            "text": "Eliminating gender may not be more or less unjust than creating gender."
+        },
+        {
+            "text": "Or it could be vastly more just or drastically more unjust"
+        },
+        {
+            "text": "Since gender identities already exist, the burden of proof that eliminating gender identities and roles would cause less harm than keeping it in place should be on those proposing to eliminate it."
+        },
+        {
+            "text": "We don't need to eliminate genders. Let's just stop officiliazing them on our ID. Instead, it should become a religious-like concept where every shade of gender exists and everyone is able to be whatever they like. Let's start by stopping to assign a gender at birth so that you don't have to consult anyone if you want to change. You could even use a different gender for your professional life than the one you use for your personal life."
+        },
+        {
+            "text": "Many people who want to identify as one gender or another may feel oppressed if they were forced to be gender neutral."
+        },
+        {
+            "text": "It was assumed that distinct gender roles would also be essential to society, but that was wrong."
+        },
+        {
+            "text": "In many societies both parents continue working."
+        },
+        {
+            "text": "In many societies it is perfectly acceptable for the man to stay at home and take care of the kids."
+        },
+        {
+            "text": "There is few if any ppl who would prefer an army of women over an army of men"
+        },
+        {
+            "text": "Many would prefer an army of women with guns over an army of men without."
+        },
+        {
+            "text": "Gender roles are synthetic whereas gender is not. While the two are related, they are categorically different and therefore equating them is foolish."
+        },
+        {
+            "text": "A society which enforces androgyny would be tyrannical for those who do not choose it. I do not feel a society which forces all citizens to conceal all physical and emotional traits that identify them as male or female would be an improvement over a society that permits people to make their own choices. Diversity must be embraced. It cannot be denied through forced uniformity."
+        },
+        {
+            "text": "Dismantling the gender concept doesn't require enforcing what we currently perceive as androgyny; rather, it requires us to change our perspectives to view everything as androgenous."
+        },
+        {
+            "text": "People will have a hard time viewing things like breasts as androgynous, unless the plan is to blind everyone."
+        },
+        {
+            "text": "It merely requires that we acknowledge that some men have breasts."
+        },
+        {
+            "text": "Exceptional individuals do not change our view of what is common or the norm."
+        },
+        {
+            "text": "Successfully enforcing this would require an even more dystopian society; controlling how people present is one thing, controlling their very thoughts is another."
+        },
+        {
+            "text": "Absolishing distinctions such as the nobility-commoner distinction or racist stereotypes is not tyrannical. It allows people to define themselves instead of being defined by those distinctions."
+        },
+        {
+            "text": "It is just as easy to argue the counter; that the enforcement of gender is tyrannical."
+        },
+        {
+            "text": "It is not really possible for an emotional trait to identify a person as male or female. All genders can experience the full range of human emotions."
+        },
+        {
+            "text": "An Adam's Apple is not an emotional trait."
+        },
+        {
+            "text": "The Adam's Apple is a secondary sex characteristic, meaning it only develops as a result of puberty. If we say that \"Males have Adam's Apples\" this would imply that no child could be male until after puberty."
+        },
+        {
+            "text": "Adam's Apples can be found in [both](https://www.medicalnewstoday.com/articles/324146.php) men and women."
+        },
+        {
+            "text": "A society without gender would be less constrained and more diverse. It is a gendered society that constrains diversity."
+        },
+        {
+            "text": "Assuming you can't control people's thoughts completely, you would need to instead massively interfere with their biology."
+        },
+        {
+            "text": "Rules to eliminate gender would have to be monitored leading to a totalitarian government such as the one seen in the book 1984 by George Orwell."
+        },
+        {
+            "text": "There is no part of the human genome that is responsible for gender colors or clothing. It is part of culture, which means it's a social construct."
+        },
+        {
+            "text": "When trousers [first appeared](https://en.wikipedia.org/wiki/Trousers_as_women%27s_clothing), they were worn by men and women alike, but were later restricted to men by social custom and law."
+        },
+        {
+            "text": "Gender is the fundamental of the knowledge we have of our existence as a human being. Which does not mean one should indentify with their gender norms but that gender is a characteristic of propably every being and a physical fact."
+        },
+        {
+            "text": "Gender is naturally occurring."
+        },
+        {
+            "text": "Whether it is natural or not doesn't make it better for society"
+        },
+        {
+            "text": "Gender is changeable, as it is formed in the mind."
+        },
+        {
+            "text": "While gender identity may be influenced, it cannot prevent people from forming initial impressions of difference in gender based on natural differences between biological sexes."
+        },
+        {
+            "text": "Gender is [complex](https://www.genderspectrum.org/quick-links/understanding-gender/) and intangible, allowing it to be modified more easily than a person's sex. In laymen's terms, a person's gender is not written in stone, whereas a person's sex is. Thus, gender is able to be manipulated as desired."
+        },
+        {
+            "text": "Gender is also [affected by the environment](https://othersociologist.com/sociology-of-gender/). Thus if gender norms change, so do a person's gender. That is why it being naturally occurring does not mean gender should exist."
+        },
+        {
+            "text": "Gender is important for reproduction of the species."
+        },
+        {
+            "text": "One cannot change the fact that there are 2 and only 2 biological genders, asexual organisms excluded. However we can change how they are viewed into more neutral ideologies. Back as close as the mid 1860s pink was considered as a manly color while. If we change perceptions that have become the norm then gender bias dies. Once that is achieved we can grow as a society without worry of fear of the unknown."
+        },
+        {
+            "text": "Gender is not a physiological construct open to subjective interpretation, but a scientifically measurable classification of sex in species."
+        },
+        {
+            "text": "You can't eliminate gender. Gender is [defined by the APA as the \"attitudes, feelings, and behaviors associated with a persons biological sex.\"](https://www.apa.org/pi/lgbt/resources/sexuality-definitions.pdf)Because of the major physical and psychological differences between the sexes, the behaviors and traits of men and women will always differentiate, and therefore some traits will always be gendered. For example, pregnancy and motherhood will always be associated with women."
+        },
+        {
+            "text": "I don't believe this will happen in the future, as scientists are continuously trying to find methods to push the envelope on reproduction. Current reproduction methods may be archaic compared to ones that can happen in the future."
+        },
+        {
+            "text": "Nothing suggests that these attitudes, feelings and behaviors cannot disappear in the future."
+        },
+        {
+            "text": "Nature is an integral, inescapable part of all life on Earth. [There are over 6500 genetic differences](https://www.dailysignal.com/2017/12/11/cretella-transcript/) that make us male or female."
+        },
+        {
+            "text": "Gender is a social construction while one's sex is biological."
+        },
+        {
+            "text": "A lot of aspects of modern society are not natural and yet they are better."
+        },
+        {
+            "text": "The issue is not when we create a synthetic construct, but when we use one in defiance of nature. Gender itself exists for a reason, and to claim we should remove it is arrogant (to clarify, gender roles took gender for societal gains, and therefore removing gender roles would be a different can of beans.)."
+        },
+        {
+            "text": "People can access all kinds of medical treatments that enable them to live happier and healthier lives as a result of modern medicine."
+        },
+        {
+            "text": "No other species of animal on the planet displays gendered signifiers"
+        },
+        {
+            "text": "[Courtship display](https://en.wikipedia.org/wiki/Courtship_display) in the animal kingdom is a behavioural signifier of gender, not an example of biological dimorphism."
+        },
+        {
+            "text": "A society with no gender may create difficulties when it comes to procreation."
+        },
+        {
+            "text": "Some societies believe gender is intrinsic to the universe, and is found in or represented by objects such as rocks and water."
+        },
+        {
+            "text": "A society with no gender constructions would require the authoritarian elimination of the expression of such biologically induced gender constructions. Forcibly preventing naturally occuring expressions of gender would not lead to a better society"
+        },
+        {
+            "text": "If gender does not exist, what we currently believe to be elements of gender would become elements of personality not tied to any gender."
+        },
+        {
+            "text": "People would notice that those 'elements of gender' tend to cluster and would simply reassert gender from observation."
+        },
+        {
+            "text": "This depends on the assumption that the majority of people in subsequent generations will tend to follow current gender norms."
+        },
+        {
+            "text": "This assumes that current gender norms have no innate basis, like the female tendency to take over child rearing."
+        },
+        {
+            "text": "If an innate basis is there, it may just as easily be overcome by social factors."
+        },
+        {
+            "text": "Gender makes it harder to consider biological realities as merely that, biological realities, and instead leads to non-biological characteristics associated with gender being conflated with biology."
+        },
+        {
+            "text": "At this point in the history of science, we don't know what characteristics are or are not biological gender."
+        },
+        {
+            "text": "Some elements of gender have their basis in biological realities."
+        },
+        {
+            "text": "The idea that gender is so detachable from who we are as people is purely illogical. We define ourselves by the use of our age, gender, features, traits and differences to others."
+        },
+        {
+            "text": "These definitions are social constructions. We only get our sense of identity from others."
+        },
+        {
+            "text": "Gender ideas are innate, even if yours doesn't match your sex. Society merely confirms our sense of identity."
+        },
+        {
+            "text": "Gender is virtually impossible to eliminate."
+        },
+        {
+            "text": "With the power to do the impossible like make gender vanish, society should use that power to end mortality or make everyone a genius, first."
+        },
+        {
+            "text": "There are people in the world that are adamant that they are not human beings but animals and disguise themselves and act as such because they feel better this way. Everyone is free to live as they want up to the point where they ask society to play along in their delusions."
+        },
+        {
+            "text": "This is untrue. Many social conventions are based on affirming the delusions of the powerful at the inconvenience of the powerless."
+        },
+        {
+            "text": "In Scandinavia, there has been extensive 'progress' towards exterminating differences between men and women socially, and this has only contributed to their voluntarily chosen differences [expanding.](https://www.thejournal.ie/gender-equality-countries-stem-girls-3848156-Feb2018/)"
+        },
+        {
+            "text": "The article concludes that the probable cause of the difference is economic, rather than social, meaning that this article does not provide strong evidence against 'social progress.'"
+        },
+        {
+            "text": "The article didn't conclude that these differences were mostly economic, shown when it states, \"It's important to take into account that girls are choosing not to study STEM for what they feel are valid reasons, so campaigns that target all girls may be a waste of energy and resources,\""
+        },
+        {
+            "text": "Many people gain a strong sense of identity from their gender."
+        },
+        {
+            "text": "Sources of identity change with the advancement of social expectations and technological advancement."
+        },
+        {
+            "text": "Creating new genders where appropriate would be better."
+        },
+        {
+            "text": "If people want to be called something other than male or female they can be comfortable being described as a third gender."
+        },
+        {
+            "text": "That is 'othering' people who are not Male or Female in gender."
+        },
+        {
+            "text": "There are many non M/F genders. The Indians (not American) had multiple genders but attributed names etc."
+        },
+        {
+            "text": "If Gender is only a 'construct' and does not affect how we deal with people (as individuals or as a mass) then we could have a near infinite number of such 'labels'."
+        },
+        {
+            "text": "Societies in which both genders are distinguished and gender roles are seperately defined are the most fair, equal and prosperous societies that exist."
+        },
+        {
+            "text": "If you have a penis you are a boy. Have been always wil Be. If you have a vagina, you are forever a girl. Just how it works. You can never truly change your gender."
+        },
+        {
+            "text": "This is stupid, men and women are clearly different. If something is different then it should be defined differently. 2 Colours for example... Red and Blue. Red may be a more popular colour but when did we give a shit about removing the difference between the colours? Never, it is what it is. We should stay with different genders."
+        },
+        {
+            "text": "Embracing diversity, including gender diversity, enriches society by making it more nuanced and interesting."
+        },
+        {
+            "text": "Killing diversity is opposing one of the most relevant nature's traits. Do not kill the mockingbird."
+        },
+        {
+            "text": "Nature regularly purges nonviable diversity"
+        },
+        {
+            "text": "Diversity for diversities sake is extremely counter to the natural order. In nature, diversity is a survival of the fittest mechanism. In human society, diversity most often times leads to conflict. The most peaceful modern human societies are the most homogenous ones. If the blanket term diversity is inherently good/beneficial to society, then sexual \"diversities\" such as pedophilia are inherently good bc they make society \"more nuanced and interesting\""
+        },
+        {
+            "text": "Humane societies do not work on a \"natural order\", a person should not change the way he wants to behave because of other people and the world (and it's diversities) became more peacefull with the globalization"
+        },
+        {
+            "text": "What should be eradicated is the confict based behavior, and harmful conducts towards others and not one's personal choices"
+        },
+        {
+            "text": "There's no point in removing genders. Indeed, giving value to them brings cultural and social empowerment"
+        },
+        {
+            "text": "The point of removing gender is creating equal power opportunities for females and encouraging males to manage their emotions. Our current gender roles work against those important aspects of equality."
+        },
+        {
+            "text": "This doesn't fix the economic problem because the issues don't arise from gender discrimination but the differing ways the genders act. Those acts won't go away just because the labels are gone."
+        },
+        {
+            "text": "Gender is how people identify with others as well as how they view themselves."
+        },
+        {
+            "text": "There will never be a society without gender, just as there will never be a society without age. An ideology that insinuates \"everyone is equal,\" makes everyone lose their individuality."
+        },
+        {
+            "text": "Individual freedom is more important than group diversity. Gender roles constrain individual freedom."
+        },
+        {
+            "text": "A constraint on the display of gender takes away individual freedom."
+        },
+        {
+            "text": "In a post gender society, people can still display behaviour which was, in the past, associated with gender. But it won't be linked to gender."
+        },
+        {
+            "text": "The parent assumes that a \"post gender society\" is composed of people who are blind and unable to put together even basic patterns of behavior."
+        },
+        {
+            "text": "Ultimate individual freedom it\u00b4s counter-productive to an healthy society. A democracy is based on common values and identities, where the group agrees on certains norms. Ultimate individual freedom leads to anarchism, and therefore, the weakening of the society and of the community"
+        },
+        {
+            "text": "There are pros and cons to being female and male and pretending gender doesn't exist doesnt remove the cons and only leave pros. We must embrace that there are genders and differences on a general level and embrace those. Theres no evidence that genderless=happiness. Those seeking genderless society are unhappy for more then a definition between male and female. Watering down differences doesnt make society happy, it certainly very boring to all be the same."
+        },
+        {
+            "text": "No gender in society would make uniqueness useless. Everyone would be the same. This would remove peoples' feeling of being unique in society."
+        },
+        {
+            "text": "You don't have to rely on your gender to feel unique. People are much more complex than what gender they identify with."
+        },
+        {
+            "text": "Gender provides a variety of experience and a basis for some beneficial cooperative partnerships, which enrich society and may be goods of themselves."
+        }
+    ]
+}
