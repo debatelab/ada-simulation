@@ -4,6 +4,7 @@
 
 import json
 import re
+import random
 
 kialo_path = '/Users/ggbetz/Documents/Philosophie/vortraege_paper/2019/Artificial Epistemic Agent/kialo_corpus/raw debates/'
 
@@ -63,7 +64,7 @@ for template in templates:
 
 
     valence_dict = {
-        '1.' = 'pro'
+        '1.': 'pro'
     }
     
     parent_depth = 0
@@ -71,7 +72,8 @@ for template in templates:
     for line in content:
         line_split = line.split()
         if line.startswith("1.") and line_split[1] in ['Pro:','Con:'] and not line_split[2].startswith('->'):
-            parent_val = valence_dict[line_split[0][:-2]]
+            parent_key = '.'.join(line_split[0].split('.')[:-2])+'.'
+            parent_val = valence_dict[parent_key]
             if line_split[1]=='Pro:':
                 val = parent_val
             else:
@@ -79,8 +81,8 @@ for template in templates:
             valence_dict[line_split[0]] = val
             text = (
                 " ".join(line_split[2:]) + 
-                random.choice([' So', ' I think', 'I believe', " That's why"]) + 
-                random.choice.template.get(val)
+                random.choice([' So', ' I think', ' I believe', " That's why"]) + 
+                random.choice(template.get(val))
             )               
             new_topic['initial_posts'].append({'type':val,'text':text})
     
@@ -100,3 +102,8 @@ for template in templates:
     with open('topics/'+template.get('filename')[:-4]+'.json', 'w') as outfile:
         json.dump(new_topic, outfile,indent=4)
 
+
+# %%
+
+"1.2.3.".split('.')
+# %%
