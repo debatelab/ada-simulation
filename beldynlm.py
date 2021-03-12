@@ -22,7 +22,7 @@ class Conversation:
         self.global_parameters = global_parameters
         
         # set up the dataframe
-        columns = ['post','peers','perspective','tokens','polarity','salience']
+        columns = ['post','peers','perspective','timestamps','tokens','polarity','salience']
         steps = np.arange(global_parameters['max_t'])
         agents = np.arange(global_parameters['n_agents'])
         steps_agents = [
@@ -33,6 +33,7 @@ class Conversation:
         self.data = pd.DataFrame(np.zeros((global_parameters['max_t']*global_parameters['n_agents'], len(columns))), index=index, columns=columns)
         self.data = self.data.astype(object)
         self.data['perspective']=[[] for i in range(len(self.data))]
+        self.data['timestamps']=[[] for i in range(len(self.data))]
         self.data['peers']=[[] for i in range(len(self.data))]
         self.data['tokens']=[[] for i in range(len(self.data))]
         
@@ -46,7 +47,7 @@ class Conversation:
     def submit_post(self, post=None, agent:int=0, t:int=0):
         self.contribute(contribution=post, agent=agent, t=t, col="post")
         
-    def save_conversation(self, path:str=None, froot:str=None, overwrite=False):
+    def save(self, path:str='', froot:str=None, overwrite=False, config=None):
         fname1 = path + froot + '.csv'
         fname2 = path + froot + '.json'
         #today = date.today().isoformat()
@@ -54,16 +55,16 @@ class Conversation:
         if (os.path.isfile(fname1) or os.path.isfile(fname2)) and not overwrite:
             print("Data not saved. File exists and overwrite=False")
         else:
-            conversation.data.to_csv(fname1)    
+            self.data.drop(columns=['tokens']).to_csv(fname1)    
             config_data = {
-                global_parameters: global_parameters,
-                peer_selection_parameters: peer_selection_parameters,
-                decoding_parameters: decoding_parameters
+                'global_parameters': self.global_parameters,
+                'topic_id': self.topic['id'],
+                'config': config
             }
             with open(fname2, 'w') as outfile:
                 json.dump(config_data, outfile,indent=4)
 
-    def load_topic(self, fname:str=None):
+    def load_topic(self, fname:str=None, tokenizer: GPT2Tokenizer = None):
         if not os.path.isfile(fname):
             print("Topic-file not found: "+fname)
             return False
@@ -71,6 +72,14 @@ class Conversation:
             with open(fname) as f:
                 topic = json.load(f)
             self.topic = topic
+            if tokenizer != None:
+                topic['intro_tokens'] = tokenizer(topic['intro'])['input_ids']
+                topic['prompt_tokens'] = tokenizer(topic['prompt'])['input_ids']
+                topic['claim_tokens'] = {
+                    'connector': tokenizer(topic['claims']['connector'])['input_ids'],
+                    'pro':[tokenizer(t)['input_ids'] for t in topic['claims']['pro']], # list of token lists
+                    'con':[tokenizer(t)['input_ids'] for t in topic['claims']['con']] # list of token lists
+                }
             return True
         
         
@@ -217,6 +226,14 @@ class ListeningLMAgent(AbstractLMAgent,LMUtilitiesMixIn):
                 agent=self.agent,
                 col="perspective"
             )
+            timestamps = [i for i, _ in perspective]
+            self.conversation.contribute(
+                contribution=timestamps,
+                t=t,
+                agent=self.agent,
+                col="timestamps"
+            )           
+            
         
         # initialize posts from topic
         for t in range(initial_steps):
@@ -262,10 +279,10 @@ class ListeningLMAgent(AbstractLMAgent,LMUtilitiesMixIn):
             
     def update_perspective(self, t: int):
         # 1. get previous perspective
-        perspective = self.conversation.get(agent=self.agent, t=t-1, col='perspective')
+        perspective_old = self.conversation.get(agent=self.agent, t=t-1, col='perspective')
 
         # 2. forget some former posts
-        perspective = self.concat_persp(perspective, t=t)
+        perspective = self.concat_persp(perspective_old, t=t)
         
         # 3. fill-in missing gaps
         perspective = self.expand_persp(perspective, t=t)
@@ -281,14 +298,33 @@ class ListeningLMAgent(AbstractLMAgent,LMUtilitiesMixIn):
             col="perspective"
         )
         
+        # 6. update timestamps
+        timestamps = self.conversation.get(agent=self.agent, t=t-1, col='timestamps')
+        timestamps = [timestamps[i] for i,p in enumerate(perspective_old) if p in perspective] # contract
+        timestamps = timestamps + [t]*(len(perspective)-len(timestamps))  # be careful here, new posts are always appended to perspective
+        self.conversation.contribute(
+            contribution=timestamps,
+            t=t,
+            agent=self.agent,
+            col="timestamps"
+        )
+        
+        
+        
 
     def concat_persp(self, perspective, t:int=0):
         perspective = perspective
         dep_exp = self.conversation.global_parameters.get('relevance_deprecation')
         sc_fact = self.conversation.global_parameters.get('self_confidence')
+        timestamps = self.conversation.get(agent=self.agent, t=t-1, col='timestamps')
+        if len(perspective) != len(timestamps):
+            print('error, timestamps and perspective of unequal length!')
+            return perspective
         
+
         weight = lambda tt,i: dep_exp**(t-tt-1) * (sc_fact if i==self.agent else 1)
-        weights = [weight(tt,i) for tt,i in perspective] 
+        weights = [(tt,pp[1]) for pp,tt in zip(perspective,timestamps)] # tuples of (time-stamp, author)
+        weights = [weight(tt,i) for tt,i in weights] 
 
         new_perspective = []
         for p,w in zip(perspective,weights):
@@ -321,13 +357,17 @@ class ListeningLMAgent(AbstractLMAgent,LMUtilitiesMixIn):
             persp_batch = [perspective + [pp] for pp in peer_posts]
             persp_batch = [perspective] + persp_batch # add contracted perspective to batch
             op_batch, _  = self.elicit_opinion_batch(persp_batch)
+            #print(op_batch)
             opinion = op_batch[0] # opinion given contracted perspective, no peer post added
             op_batch = op_batch[1:] # opinions given perspective + indivdual peer post
             def conf(x):
                 c = (x-x0)/(opinion-x0)
                 c = 0 if c<0 else c
                 return c
+            #print(x0)
+            #print(cb_exp)
             weights = [conf(x)**cb_exp for x in op_batch]
+            #print(weights)
             
             #opinion_perspective = self.elicit_opinion(perspective)[0] # opinion given contracted perspective, no peer post added
             #def conf(p:(int)):

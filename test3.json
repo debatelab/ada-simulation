@@ -1,0 +1,37 @@
+{
+    "global_parameters": {
+        "topic": "compulsory_voting",
+        "n_agents": 15,
+        "max_t": 200,
+        "n_initial_posts": 5,
+        "initial_neighb-peer_ratio": 0.5,
+        "context_size": 8,
+        "relevance_deprecation": 0.9,
+        "self_confidence": 1,
+        "n_gram_prohibition": 5,
+        "perspective_expansion_method": "random",
+        "conf_bias_exponent": 5,
+        "peer_selection_method": "bounded_confidence",
+        "fwd_batch_size": 4
+    },
+    "topic_id": "compulsory_voting_polarized",
+    "config": [
+        {
+            "do_sample": true,
+            "num_beams": 5,
+            "temperature": 1,
+            "top_p": 0.5,
+            "top_k": 0,
+            "repetition_penalty": 1.2,
+            "max_length": 40,
+            "bad_words_ids": [
+                [
+                    198
+                ],
+                [
+                    986
+                ]
+            ]
+        }
+    ]
+}

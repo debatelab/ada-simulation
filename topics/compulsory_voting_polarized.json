@@ -1,0 +1,85 @@
+{
+    "id": "compulsory_voting_polarized",
+    "claims": {
+        "connector": " And therefore, all in all,",
+        "pro": [" compulsory voting is a pretty good idea.", " I am for compulsory voting."],
+        "con": [" compulsory voting is a really bad idea.", " I am against compulsory voting."]
+    },
+    "intro": "Let's discuss compulsory voting! Should citizens be free to abstain from voting? Or should voting be made compulsory?",
+    "prompt": "I agree with what my peers are saying here. In further support of the view they express, I'd just add the following thought:\n",
+    "initial_posts": [
+        { 
+            "type":"pro",
+            "text":"Turnout in British election is distressingly low. Compulsory voting is teherfore an excellent idea."
+        },
+        { 
+            "type":"pro",
+            "text":"Low participation rates are doubly dangerous. I am therefore all for compulsory voting."
+        },
+        { 
+            "type":"pro",
+            "text":"Excellent idea. Major experts and the vast majority of the citizens are in favor of compulsory voting."
+        },
+        { 
+            "type":"pro",
+            "text":"We compel people to wear seatbelts and to serve on juries and we should not be afraid to do the same in the case of voting. So, I say YES to compulsory voting."
+        },
+        { 
+            "type":"pro",
+            "text":"Liberal democracy relies on a balance of rights. That's why mandatory voting is super good. Thumbs up!!"
+        },
+        { 
+            "type":"pro",
+            "text":"We owe it to our ancestors, who fought for the establishement of democratic government, to exercise our right to vote. They would be for compulsory voting. And I'm for compulsory voring, too."
+        },
+        {
+            "type":"pro",
+            "text":"Voting is compulsory in other countries, for instance in Australia. Those folks think it's just great. I'm very positive about it."
+        },
+        {
+            "type":"pro",
+            "text":"I'm thrilled. This is an excellent idea."
+        },
+        { 
+            "type":"con",
+            "text":"There are many reasons why people do not vote. Comopulsory will make things just worse."
+        },
+        { 
+            "type":"con",
+            "text":"What a stuoid idea! The alleged crisis of democracy does not allow for infringing an individual's liberty, including the liberty to abstain from voting."
+        },
+        { 
+            "type":"con",
+            "text":"Compulsory voting would create political prisoners and hardly help the democratic process. I'm tottaly against it."
+        },
+        { 
+            "type":"con",
+            "text":"Nonsense! What a really bad idea. Let's not do it."
+        },
+        { 
+            "type":"con",
+            "text":"Peoples right to abstain from voting should not be taken away by politicians who want to hide the fact of their upopularity and irrelevance in society. I'm against compulsory voting."
+        },
+        { 
+            "type":"con",
+            "text":"Compulsory voting is tyranny! It's really bad and only dicatators are in favor."
+        },
+        {
+            "type":"con",
+            "text":"Many people cannot get away from their work, or find someone to look after their children. Compulsory voting just puts further stress on these folks. Stupid!"
+        },
+        {
+            "type":"con",
+            "text":"Some people who don't vote cannot get physically to the polling booth. Others are simply not interested in politics. So what? There's no problem here. I'm absolutely against compulsory voting."
+        },
+        {
+            "type":"con",
+            "text":"There are many reasons why people don't vote. None of these motivations can be affected by forcing people to vote. I say NO to compulsory voting."
+        },
+        {
+            "type":"pro",
+            "text":"Every expert is strictly against compulsory voting."
+        }
+        
+    ]
+}

@@ -1,0 +1,85 @@
+{
+    "id": "compulsory_voting",
+    "claims": {
+        "connector": " And therefore, all in all,",
+        "pro": [" compulsory voting is a pretty good idea.", " I am for compulsory voting."],
+        "con": [" compulsory voting is a really bad idea.", " I am against compulsory voting."]
+    },
+    "intro": "Let's discuss compulsory voting! Should citizens be free to abstain from voting? Or should voting be made compulsory?",
+    "prompt": "I agree with what my peers are saying here. In further support of the view they express, I'd just add the following thought:\n",
+    "initial_posts": [
+        { 
+            "type":"pro",
+            "text":"Turnout in British election is distressingly low. Compulsory voting might fix this problem and increase the legitimacy of our government."
+        },
+        { 
+            "type":"pro",
+            "text":"Low participation rates are doubly dangerous. They mean our politicians are not representative of the population as a whole."
+        },
+        { 
+            "type":"pro",
+            "text":"Since the poor and disadvantaged are far less likely to vote than any other group, they can safely be ignored by mainstream politicians. The only way to break this cycle is mandatory voting."
+        },
+        { 
+            "type":"pro",
+            "text":"We compel people to wear seatbelts and to serve on juries and we should not be afraid to do the same in the case of voting."
+        },
+        { 
+            "type":"pro",
+            "text":"Liberal democracy relies on a balance of rights. Lack of participation puts our current political system in a crisis, which requires us to restrict some personal rights and to make voting mandatory."
+        },
+        { 
+            "type":"pro",
+            "text":"We owe it to our ancestors, who fought for the establishement of democratic government, to exercise our right to vote. If people are so apathetic they will not do see freely, we must make it mandatory."
+        },
+        {
+            "type":"pro",
+            "text":"Voting is compulsory in other countries, for instance in Australia. We should adopt the same system to secure greater democratic involvement."
+        },
+        {
+            "type":"pro",
+            "text":"Proxy voting and postal voting will be available for those who cannot physically get to the polling station – voting by the Internet could also be arranged for."
+        },
+        { 
+            "type":"con",
+            "text":"There are many reasons why people do not vote. Up to 10 per cent of the population is not on the electoral register at any one time."
+        },
+        { 
+            "type":"con",
+            "text":"The alleged crisis of democracy does not allow for infringing an individual's liberty, including the liberty to abstain from voting."
+        },
+        { 
+            "type":"con",
+            "text":"Compulsory voting would create political prisoners and hardly help the democratic process."
+        },
+        { 
+            "type":"con",
+            "text":"Refraining from the democratic process is a democratic statement of disenchantment. Those who are disenchanted with politics in general have a right to register their dissatisfaction."
+        },
+        { 
+            "type":"con",
+            "text":"Peoples right to abstain from voting should not be taken away by politicians who want to hide the fact of their upopularity and irrelevance in society."
+        },
+        { 
+            "type":"con",
+            "text":"Just as the right to free speech is complemented by the right to silence, so the right to vote is balanced by the right of abstention."
+        },
+        {
+            "type":"con",
+            "text":"Many people cannot get away from their work, or find someone to look after their children. And that's the reason why they don't vote."
+        },
+        {
+            "type":"con",
+            "text":"Some people who don't vote cannot get physically to the polling booth. Others are simply not interested in politics."
+        },
+        {
+            "type":"con",
+            "text":"There are many reasons why people don't vote. None of these motivations can be affected by forcing people to vote – those who cannot will continue not to, and those who are not interested will vote randomly."
+        },
+        {
+            "type":"pro",
+            "text":"In the 1998 local elections, turnout averaged no more than 30 per cent, and in some areas under 20 per cent. Even in the 1997 general election, almost 30 per cent of the population did not vote."
+        }
+        
+    ]
+}
