@@ -340,7 +340,7 @@ class ListeningLMAgent(AbstractLMAgent,LMUtilitiesMixIn):
             cb_exp = self.conversation.global_parameters.get('conf_bias_exponent') # exponent
             
             ## elicit opinion batch
-            persp_batch = [perspective[:i]+perspective[i+1:] for i in len(perspective)]
+            persp_batch = [perspective[:i]+perspective[i+1:] for i in range(len(perspective))]
             persp_batch = [perspective] + persp_batch # add current perspective to batch
             op_batch, _  = self.elicit_opinion_batch(persp_batch)
             #print(op_batch)
