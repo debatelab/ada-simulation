@@ -348,8 +348,8 @@ class ListeningLMAgent(AbstractLMAgent,LMUtilitiesMixIn):
             op_batch = op_batch[1:] # opinions given perspective - indivdual post
             def conf(x):
                 #c = (x-x0)/(opinion-x0)
-                #c = 0 if c<0 else c
-                c = x-opinion
+                c = (x-opinion)/(opinion-x0)
+                c = 0 if c<0 else c
                 return c
             weights_conf = [conf(x)**cb_exp for x in op_batch]  
             # finally, rescale:          
@@ -403,8 +403,8 @@ class ListeningLMAgent(AbstractLMAgent,LMUtilitiesMixIn):
             op_batch = op_batch[1:] # opinions given perspective + indivdual peer post
             def conf(x):
                 #c = (x-x0)/(opinion-x0)
-                #c = 0 if c<0 else c
-                c = x-opinion
+                c = (x-opinion)/(opinion-x0)
+                c = 0 if c<0 else c
                 return c
             #print(x0)
             #print(cb_exp)
