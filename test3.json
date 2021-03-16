@@ -14,7 +14,7 @@
         "peer_selection_method": "bounded_confidence",
         "fwd_batch_size": 20
     },
-    "topic_id": "compulsory_voting_polarized",
+    "topic_id": "all-drugs-should-be-legalized",
     "config": [
         {
             "do_sample": true,
