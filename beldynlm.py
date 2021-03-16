@@ -536,7 +536,7 @@ class ListeningLMAgent(AbstractLMAgent,LMUtilitiesMixIn):
                 input_tokens_batch = [token_ids_cond + token_ids for token_ids_cond in token_ids_cond_batch]
                 print('Size of input_tokens_batch: %s'%(len(input_tokens_batch)))
                 mini_batches = [input_tokens_batch[i:i+fwd_batch_size] for i in range(0, len(input_tokens_batch), fwd_batch_size)]
-                print('Number of mini_batches: %s'%(len(input_tokens_batch)))
+                print('Number of mini_batches: %s'%(len(mini_batches)))
                 PP_claim = []
                 for mini_batch in mini_batches:
                     print('Size of mini_batch: %s'%(len(mini_batch)))
