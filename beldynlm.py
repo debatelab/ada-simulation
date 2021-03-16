@@ -340,7 +340,7 @@ class ListeningLMAgent(AbstractLMAgent,LMUtilitiesMixIn):
             cb_exp = self.conversation.global_parameters.get('conf_bias_exponent') # exponent
             
             ## elicit opinion batch
-            persp_batch = [set(perspective) - {p} for p in perspective]
+            persp_batch = [perspective[:i]+perspective[i+1:] for i in len(perspective)]
             persp_batch = [perspective] + persp_batch # add current perspective to batch
             op_batch, _  = self.elicit_opinion_batch(persp_batch)
             #print(op_batch)
@@ -453,9 +453,14 @@ class ListeningLMAgent(AbstractLMAgent,LMUtilitiesMixIn):
                 agent=peer,
                 col="perspective"
             )
-            peer_posts = peer_posts + ppersp        
-        peer_posts = list(set(peer_posts))
-        return peer_posts        
+            peer_posts = peer_posts + ppersp 
+
+        peer_posts_no_dupl = []
+        for pp in peer_posts:       
+            if not pp in peer_posts_no_dupl:
+                peer_posts_no_dupl.append(pp)
+
+        return peer_posts_no_dupl        
         
 
         
@@ -503,7 +508,7 @@ class ListeningLMAgent(AbstractLMAgent,LMUtilitiesMixIn):
             
 
                 
-    def elicit_opinion_batch(self, perspectives: [[(int)]]):
+    def elicit_opinion_batch(self, perspectives:[[(int)]]):
         
         batch_size = len(perspectives)
         fwd_batch_size = self.conversation.global_parameters.get('fwd_batch_size')
@@ -529,12 +534,17 @@ class ListeningLMAgent(AbstractLMAgent,LMUtilitiesMixIn):
             PP = [0]*batch_size
             for token_ids in token_ids_claim: 
                 input_tokens_batch = [token_ids_cond + token_ids for token_ids_cond in token_ids_cond_batch]
+                print('Size of input_tokens_batch: %s'%(len(input_tokens_batch)))
                 mini_batches = [input_tokens_batch[i:i+fwd_batch_size] for i in range(0, len(input_tokens_batch), fwd_batch_size)]
+                print('Number of mini_batches: %s'%(len(input_tokens_batch)))
                 PP_claim = []
                 for mini_batch in mini_batches:
+                    print('Size of mini_batch: %s'%(len(mini_batch)))
                     max_len = max([len(x) for x in mini_batch])
                     # pad mini batch:
                     mini_batch_padded = [([self.tokenizer.pad_token_id]*(max_len-len(x))) + x for x in mini_batch]
+                    if len(set(len(e) for e in mini_batch_padded))!=1:
+                        print("Error! Size of token lists in minibatch: "+str([len(e) for e in mini_batch_padded]))
                     input_tensor = torch.tensor(mini_batch_padded).to('cuda')
                     output = self.model(input_tensor,labels=input_tensor)
                     PP_mb = []
