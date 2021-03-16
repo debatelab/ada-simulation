@@ -3,6 +3,8 @@ import numpy as np
 import random
 import json
 
+from typing import Tuple, List
+
 import os
 import os.path
 import logging
@@ -182,7 +184,7 @@ class ListeningLMAgent(AbstractLMAgent,LMUtilitiesMixIn):
                  model: GPT2LMHeadModel = None, 
                  tokenizer: GPT2Tokenizer = None, 
                  conversation: Conversation = None,
-                 neighbors:[int] = [],
+                 neighbors:List[int] = [],
                  agent:int = 0,
                  peer_selection_args:dict = None,
                  perspective_expansion_method:str = 'random',
@@ -476,7 +478,7 @@ class ListeningLMAgent(AbstractLMAgent,LMUtilitiesMixIn):
 
         
         
-    def elicit_opinion(self, perspective: [(int)]):
+    def elicit_opinion(self, perspective: List[Tuple[int]]):
         
         # collect_and_glue_perspective_tokens
         token_ids_cond = self.conversation.topic['intro_tokens']
@@ -512,7 +514,8 @@ class ListeningLMAgent(AbstractLMAgent,LMUtilitiesMixIn):
             
 
                 
-    def elicit_opinion_batch(self, perspectives:[[(int)]]):
+#    def elicit_opinion_batch(self, perspectives:[[(int)]]):
+    def elicit_opinion_batch(self, perspectives:List[List[Tuple[int]]]):
         
         batch_size = len(perspectives)
         fwd_batch_size = self.conversation.global_parameters.get('fwd_batch_size')
