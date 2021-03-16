@@ -335,25 +335,25 @@ class ListeningLMAgent(AbstractLMAgent,LMUtilitiesMixIn):
         # rescale weights acc to confirmation bias
         #   rescaling reflects relevance confirmation of current
         #   normalized belief by perspective - post
-        if self.perspective_expansion_method=='confirmation_bias':
-            x0 = self.conversation.get(t=0,agent=self.agent,col="polarity") # baseline belief
-            cb_exp = self.conversation.global_parameters.get('conf_bias_exponent') # exponent
-            
-            ## elicit opinion batch
-            persp_batch = [set(perspective) - {p} for p in perspective]
-            persp_batch = [perspective] + persp_batch # add current perspective to batch
-            op_batch, _  = self.elicit_opinion_batch(persp_batch)
-            #print(op_batch)
-            opinion = op_batch[0] # opinion given default perspective
-            op_batch = op_batch[1:] # opinions given perspective - indivdual post
-            def conf(x):
-                #c = (x-x0)/(opinion-x0)
-                c = (x-opinion)/(opinion-x0)
-                c = 0 if c<0 else c
-                return c
-            weights_conf = [conf(x)**cb_exp for x in op_batch]  
-            # finally, rescale:          
-            weights = [w1*w2 for w1,w2 in zip(weights, weights_conf)]        
+#        if self.perspective_expansion_method=='confirmation_bias':
+#            x0 = self.conversation.get(t=0,agent=self.agent,col="polarity") # baseline belief
+#            cb_exp = self.conversation.global_parameters.get('conf_bias_exponent') # exponent
+#            
+#            ## elicit opinion batch
+#            persp_batch = [set(perspective) - {p} for p in perspective]
+#            persp_batch = [perspective] + persp_batch # add current perspective to batch
+#            op_batch, _  = self.elicit_opinion_batch(persp_batch)
+#            #print(op_batch)
+#            opinion = op_batch[0] # opinion given default perspective
+#            op_batch = op_batch[1:] # opinions given perspective - indivdual post
+#            def conf(x):
+#                #c = (x-x0)/(opinion-x0)
+#                c = (x-opinion)/(opinion-x0)
+#                c = 0 if c<0 else c
+#                return c
+#            weights_conf = [conf(x)**cb_exp for x in op_batch]  
+#            # finally, rescale:          
+#            weights = [w1*w2 for w1,w2 in zip(weights, weights_conf)]        
 
         # sample new perspective according to weights
         new_perspective = []
