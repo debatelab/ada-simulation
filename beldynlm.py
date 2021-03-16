@@ -36,6 +36,7 @@ class Conversation:
         self.data['timestamps']=[[] for i in range(len(self.data))]
         self.data['peers']=[[] for i in range(len(self.data))]
         self.data['tokens']=[[] for i in range(len(self.data))]
+        self.data['post']=[None for i in range(len(self.data))]
         
 
     def contribute(self, contribution=None, agent:int=0, t:int=0, col:str=None):
@@ -288,7 +289,12 @@ class ListeningLMAgent(AbstractLMAgent,LMUtilitiesMixIn):
         perspective = self.expand_persp(perspective, t=t)
         
         # 4. remove duplicates
-        perspective = list(set(perspective))
+        persp_no_dupl = []
+        for p in perspective:
+            if not p in persp_no_dupl:
+                persp_no_dupl.append(p)
+        perspective = persp_no_dupl
+        
         
         # 5. update
         self.conversation.contribute(
@@ -331,6 +337,10 @@ class ListeningLMAgent(AbstractLMAgent,LMUtilitiesMixIn):
             if random.uniform(0,1)<w:
                 new_perspective.append(p)
 
+        # if no post has been forgotten so far, drop at least one post
+        if len(perspective)==len(new_perspective) and len(perspective)>0:
+            new_perspective = random.choices(perspective, k=(len(perspective)-1), weights=weights)                
+                
         return new_perspective
 
 
@@ -338,6 +348,13 @@ class ListeningLMAgent(AbstractLMAgent,LMUtilitiesMixIn):
     def expand_persp(self, perspective, t:int=0):
         perspective = perspective
         size = self.conversation.global_parameters.get('context_size')
+        
+        # add recent contribution of agent herself
+        if len(perspective)<size:
+            if self.conversation.get(agent=self.agent, t=t-1, col='post') != None:
+                perspective = perspective + [(t-1,self.agent)]
+        
+        # peer posts
         peer_posts = self.get_peer_posts(t) # all posts from which new posts that will be added to perspective are chosen
 
         # append all peer posts if max perspective size allows 
@@ -402,6 +419,8 @@ class ListeningLMAgent(AbstractLMAgent,LMUtilitiesMixIn):
                 agent=self.agent,
                 col="peers"
             )
+        # exclude agent herself
+        peers = [i for i in peers if i!=self.agent]        
         peer_posts = []
         for peer in peers:
             ppersp = self.conversation.get(
@@ -520,8 +539,8 @@ class ListeningLMAgent(AbstractLMAgent,LMUtilitiesMixIn):
     
 class GeneratingLMAgent(ListeningLMAgent):
         
-
-    def get_peer_posts(self, t:int=0):
+    # currently not used:
+    def get_peer_posts2(self, t:int=0):
         """Peer posts at step t
         
         List of all posts in format (step,agent) that are eligible for being newly added to 
