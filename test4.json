@@ -1,19 +1,19 @@
 {
     "global_parameters": {
         "topic": "compulsory_voting",
-        "n_agents": 15,
+        "n_agents": 16,
         "max_t": 20,
         "n_initial_posts": 5,
         "context_size": 8,
         "background_beliefs": 0,
         "initial_neighb-peer_ratio": 0.5,
-        "relevance_deprecation": 0.9,
+        "relevance_deprecation": 0.99,
         "self_confidence": 1,
         "n_gram_prohibition": 5,
         "perspective_expansion_method": "confirmation_bias",
         "conf_bias_exponent": 5,
         "peer_selection_method": "all_neighbors",
-        "fwd_batch_size": 16
+        "fwd_batch_size": 10
     },
     "topic_id": "all-drugs-should-be-legalized",
     "config": [
