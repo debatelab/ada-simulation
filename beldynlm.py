@@ -5,6 +5,7 @@ import json
 
 import os
 import os.path
+import logging
 
 from nltk import ngrams
 
@@ -532,17 +533,17 @@ class ListeningLMAgent(AbstractLMAgent,LMUtilitiesMixIn):
             PP = [0]*batch_size
             for token_ids in token_ids_claim: 
                 input_tokens_batch = [token_ids_cond + token_ids for token_ids_cond in token_ids_cond_batch]
-                print('Size of input_tokens_batch: %s'%(len(input_tokens_batch)))
+                logging.debug('Size of input_tokens_batch: %s'%(len(input_tokens_batch)))
                 mini_batches = [input_tokens_batch[i:i+fwd_batch_size] for i in range(0, len(input_tokens_batch), fwd_batch_size)]
-                print('Number of mini_batches: %s'%(len(mini_batches)))
+                logging.debug('Number of mini_batches: %s'%(len(mini_batches)))
                 PP_claim = []
                 for mini_batch in mini_batches:
-                    print('Size of mini_batch: %s'%(len(mini_batch)))
+                    logging.debug('Size of mini_batch: %s'%(len(mini_batch)))
                     max_len = max([len(x) for x in mini_batch])
                     # pad mini batch:
                     mini_batch_padded = [([self.tokenizer.pad_token_id]*(max_len-len(x))) + x for x in mini_batch]
                     if len(set(len(e) for e in mini_batch_padded))!=1:
-                        print("Error! Size of token lists in minibatch: "+str([len(e) for e in mini_batch_padded]))
+                        logging.debug("Error! Size of token lists in minibatch: "+str([len(e) for e in mini_batch_padded]))
                     input_tensor = torch.tensor(mini_batch_padded).to('cuda')
                     output = self.model(input_tensor,labels=input_tensor)
                     PP_mb = []
