@@ -2,7 +2,7 @@
     "global_parameters": {
         "topic": "compulsory_voting",
         "n_agents": 15,
-        "max_t": 200,
+        "max_t": 40,
         "n_initial_posts": 5,
         "initial_neighb-peer_ratio": 0.5,
         "context_size": 8,
@@ -12,7 +12,7 @@
         "perspective_expansion_method": "random",
         "conf_bias_exponent": 5,
         "peer_selection_method": "bounded_confidence",
-        "fwd_batch_size": 4
+        "fwd_batch_size": 20
     },
     "topic_id": "compulsory_voting_polarized",
     "config": [

@@ -9,10 +9,10 @@
         "relevance_deprecation": 0.9,
         "self_confidence": 1,
         "n_gram_prohibition": 5,
-        "perspective_expansion_method": "random",
+        "perspective_expansion_method": "confirmation_bias",
         "conf_bias_exponent": 5,
-        "peer_selection_method": "bounded_confidence",
-        "fwd_batch_size": 4
+        "peer_selection_method": "all_neighbors",
+        "fwd_batch_size": 20
     },
     "topic_id": "all-drugs-should-be-legalized",
     "config": [
