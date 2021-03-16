@@ -326,12 +326,36 @@ class ListeningLMAgent(AbstractLMAgent,LMUtilitiesMixIn):
         if len(perspective) != len(timestamps):
             print('error, timestamps and perspective of unequal length!')
             return perspective
-        
-
+    
+        # relevance deprecation and self-confidence
         weight = lambda tt,i: dep_exp**(t-tt-1) * (sc_fact if i==self.agent else 1)
         weights = [(tt,pp[1]) for pp,tt in zip(perspective,timestamps)] # tuples of (time-stamp, author)
         weights = [weight(tt,i) for tt,i in weights] 
 
+        # rescale weights acc to confirmation bias
+        #   rescaling reflects relevance confirmation of current
+        #   normalized belief by perspective - post
+        if self.perspective_expansion_method=='confirmation_bias':
+            x0 = self.conversation.get(t=0,agent=self.agent,col="polarity") # baseline belief
+            cb_exp = self.conversation.global_parameters.get('conf_bias_exponent') # exponent
+            
+            ## elicit opinion batch
+            persp_batch = [set(perspective) - {p} for p in perspective]
+            persp_batch = [perspective] + persp_batch # add current perspective to batch
+            op_batch, _  = self.elicit_opinion_batch(persp_batch)
+            #print(op_batch)
+            opinion = op_batch[0] # opinion given default perspective
+            op_batch = op_batch[1:] # opinions given perspective - indivdual post
+            def conf(x):
+                #c = (x-x0)/(opinion-x0)
+                #c = 0 if c<0 else c
+                c = x-opinion
+                return c
+            weights_conf = [conf(x)**cb_exp for x in op_batch]  
+            # finally, rescale:          
+            weights = [w1*w2 for w1,w2 in zip(weights, weights_conf)]        
+
+        # sample new perspective according to weights
         new_perspective = []
         for p,w in zip(perspective,weights):
             if random.uniform(0,1)<w:
@@ -378,8 +402,9 @@ class ListeningLMAgent(AbstractLMAgent,LMUtilitiesMixIn):
             opinion = op_batch[0] # opinion given contracted perspective, no peer post added
             op_batch = op_batch[1:] # opinions given perspective + indivdual peer post
             def conf(x):
-                c = (x-x0)/(opinion-x0)
-                c = 0 if c<0 else c
+                #c = (x-x0)/(opinion-x0)
+                #c = 0 if c<0 else c
+                c = x-opinion
                 return c
             #print(x0)
             #print(cb_exp)
