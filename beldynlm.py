@@ -390,6 +390,9 @@ class ListeningLMAgent(AbstractLMAgent,LMUtilitiesMixIn):
         peer_posts = self.get_peer_posts(t) # all posts from which new posts that will be added to perspective are chosen
         peer_posts = [p for p in peer_posts if not p in perspective] # exclude posts already in perspective
 
+        # DEBUG
+        print('Agent {}: len perspective = {},  len peer posts = {}.'.format(self.agent, len(perspective), len(peer_posts)))
+
         # determine weights for selecting new posts for perspective according to perspective_expansion_method
         if self.perspective_expansion_method=='random':
             # uniform weights
@@ -444,6 +447,9 @@ class ListeningLMAgent(AbstractLMAgent,LMUtilitiesMixIn):
                 perspective = perspective + [p_new[0][0]] # add post to perspective
                 ppws = [pw for pw in ppws if not pw in p_new] # remove post from ppws (-> sampling without replacement)
                 
+        # DEBUG
+        print('Agent {}: len perspective after expansion= {}'.format(self.agent, len(perspective)))
+
         return perspective
 
     
