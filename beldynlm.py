@@ -284,12 +284,20 @@ class ListeningLMAgent(AbstractLMAgent,LMUtilitiesMixIn):
     def update_perspective(self, t: int):
         # 1. get previous perspective
         perspective_old = self.conversation.get(agent=self.agent, t=t-1, col='perspective')
+        # DEBUG
+        print('1. Agent {}: len perspective = {} ({})'.format(self.agent, len(perspective_old), len(set(perspective_old))))
+
+
 
         # 2. forget some former posts
         perspective = self.concat_persp(perspective_old, t=t)
+        # DEBUG
+        print('2. Agent {}: len perspective = {} ({})'.format(self.agent, len(perspective), len(set(perspective))))
         
         # 3. fill-in missing gaps
         perspective = self.expand_persp(perspective, t=t)
+        # DEBUG
+        print('3. Agent {}: len perspective = {} ({})'.format(self.agent, len(perspective), len(set(perspective))))
         
         # 4. remove duplicates
         persp_no_dupl = []
@@ -297,8 +305,9 @@ class ListeningLMAgent(AbstractLMAgent,LMUtilitiesMixIn):
             if not p in persp_no_dupl:
                 persp_no_dupl.append(p)
         perspective = persp_no_dupl
-        
-        
+        # DEBUG
+        print('4. Agent {}: len perspective = {} ({})'.format(self.agent, len(perspective), len(set(perspective))))
+                
         # 5. update
         self.conversation.contribute(
             contribution=perspective,
@@ -391,7 +400,7 @@ class ListeningLMAgent(AbstractLMAgent,LMUtilitiesMixIn):
         peer_posts = [p for p in peer_posts if not p in perspective] # exclude posts already in perspective
 
         # DEBUG
-        print('Agent {}: perspective = {} ({}), peer posts = {} ({}).'.format(self.agent, len(perspective), len(set(perspective)), len(peer_posts), len(set(peer_posts))))
+        #print('Agent {}: perspective = {} ({}), peer posts = {} ({}).'.format(self.agent, len(perspective), len(set(perspective)), len(peer_posts), len(set(peer_posts))))
         
 
         # determine weights for selecting new posts for perspective according to perspective_expansion_method
@@ -448,9 +457,6 @@ class ListeningLMAgent(AbstractLMAgent,LMUtilitiesMixIn):
                 perspective = perspective + [p_new[0][0]] # add post to perspective
                 ppws = [pw for pw in ppws if not pw in p_new] # remove post from ppws (-> sampling without replacement)
                 
-        # DEBUG
-        print('Agent {}: len perspective after expansion= {} ({})'.format(self.agent, len(perspective), len(set(perspective))))
-
         return perspective
 
     
