@@ -345,31 +345,31 @@ class ListeningLMAgent(AbstractLMAgent,LMUtilitiesMixIn):
         weights = [weight(tt,i) for tt,i in weights] 
 
 
-        ## rescale weights acc to confirmation bias
-        ##   rescaling reflects relevance confirmation of current
-        ##   normalized belief by perspective - post
-        #mean_weights = sum(weights)/len(weights)
-        #if self.perspective_expansion_method=='confirmation_bias':
-        #    x0 = self.conversation.get(t=0,agent=self.agent,col="polarity") # baseline belief
-        #    cb_exp = self.conversation.global_parameters.get('conf_bias_exponent') # exponent
-        #    
-        #    ## elicit opinion batch
-        #    #persp_batch = [perspective[:i]+perspective[i+1:] for i in range(len(perspective))]
-        #    persp_batch = [[p] for p in perspective]
-        #    persp_batch = [perspective] + persp_batch # add current perspective to batch
-        #    op_batch, _  = self.elicit_opinion_batch(persp_batch)
-        #    #print(op_batch)
-        #    opinion = op_batch[0] # opinion given default perspective
-        #    op_batch = op_batch[1:] # opinions given perspective - indivdual post
-        #    def conf(x):
-        #        c = np.log(x)-np.log(x0) if opinion>x0 else np.log(x0)-np.log(x)
-        #        return c
-        #    weights_conf = [conf(x) for x in op_batch]  
-        #    # add disconf values to weights
-        #    weights = [w1+w2 for w1,w2 in zip(weights, weights_conf)]        
-        #    # finally, mean-rescale:    
-        #    mean_new_weights = sum(weights)/len(weights) 
-        #    weights = [(mean_weights/mean_new_weights)*w for w in weights]
+        # rescale weights acc to confirmation bias
+        #   rescaling reflects relevance confirmation of current
+        #   normalized belief by perspective - post
+        mean_weights = sum(weights)/len(weights)
+        if self.perspective_expansion_method=='confirmation_bias':
+            x0 = self.conversation.get(t=0,agent=self.agent,col="polarity") # baseline belief
+            cb_exp = self.conversation.global_parameters.get('conf_bias_exponent') # exponent
+            
+            ## elicit opinion batch
+            #persp_batch = [perspective[:i]+perspective[i+1:] for i in range(len(perspective))]
+            persp_batch = [[p] for p in perspective]
+            persp_batch = [perspective] + persp_batch # add current perspective to batch
+            op_batch, _  = self.elicit_opinion_batch(persp_batch)
+            #print(op_batch)
+            opinion = op_batch[0] # opinion given default perspective
+            op_batch = op_batch[1:] # opinions given perspective - indivdual post
+            def conf(x):
+                c = np.log(x)-np.log(x0) if opinion>x0 else np.log(x0)-np.log(x)
+                return c
+            weights_conf = [conf(x) for x in op_batch]  
+            # add disconf values to weights
+            weights = [w1+w2 for w1,w2 in zip(weights, weights_conf)]        
+            # finally, mean-rescale:    
+            mean_new_weights = sum(weights)/len(weights) 
+            weights = [(mean_weights/mean_new_weights)*w for w in weights]
 
 
         # sample new perspective according to weights
