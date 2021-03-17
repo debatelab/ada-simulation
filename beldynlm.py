@@ -349,7 +349,7 @@ class ListeningLMAgent(AbstractLMAgent,LMUtilitiesMixIn):
         # rescale weights acc to confirmation bias
         #   rescaling reflects relevance confirmation of current
         #   normalized belief by perspective - post
-        if self.perspective_expansion_method=='confirmation_bias':
+        if self.perspective_expansion_method=='confirmation_bias' and False:
             x0 = self.conversation.get(t=0,agent=self.agent,col="polarity") # baseline belief
             cb_exp = self.conversation.global_parameters.get('conf_bias_exponent') # exponent
             
