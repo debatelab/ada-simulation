@@ -640,7 +640,7 @@ class FormalModelAgent(ListeningLMAgent):
         reason_strengths:dict = self.conversation.reason_strengths
         if reason_strengths==None:
             print("Error: reason_strengths of conversation not initialized!")
-        pp_rs = [reason_strengths(p) for p in perspective]
+        pp_rs = [reason_strengths.get(p) for p in perspective]
         return np.mean(pp_rs), 1
 
     def elicit_opinion_batch(self, perspectives:List[List[Tuple[int]]]):
