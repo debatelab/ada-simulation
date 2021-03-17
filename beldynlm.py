@@ -380,7 +380,8 @@ class ListeningLMAgent(AbstractLMAgent,LMUtilitiesMixIn):
 
         # if no post has been forgotten so far, drop at least one post
         if len(perspective)==len(new_perspective) and len(perspective)>0:
-            new_perspective = random.choices(perspective, k=(len(perspective)-1), weights=weights)                
+            p_drop = random.choices(perspective, k=1, weights=[1-w for w in weights])
+            new_perspective = [p for p in perspective if not p in p_drop]                
                 
         return new_perspective
 
