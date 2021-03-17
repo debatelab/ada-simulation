@@ -284,30 +284,28 @@ class ListeningLMAgent(AbstractLMAgent,LMUtilitiesMixIn):
     def update_perspective(self, t: int):
         # 1. get previous perspective
         perspective_old = self.conversation.get(agent=self.agent, t=t-1, col='perspective')
-        # DEBUG
-        print('1. Agent {}: len perspective = {} ({})'.format(self.agent, len(perspective_old), len(set(perspective_old))))
-
+        logging.debug('1. Agent {}: len perspective = {} ({})'.format(self.agent, len(perspective_old), len(set(perspective_old))))
 
 
         # 2. forget some former posts
         perspective = self.concat_persp(perspective_old, t=t)
-        # DEBUG
-        print('2. Agent {}: len perspective = {} ({})'.format(self.agent, len(perspective), len(set(perspective))))
-        
+        logging.debug('2. Agent {}: len perspective = {} ({})'.format(self.agent, len(perspective), len(set(perspective))))
+
+
         # 3. fill-in missing gaps
         perspective = self.expand_persp(perspective, t=t)
-        # DEBUG
-        print('3. Agent {}: len perspective = {} ({})'.format(self.agent, len(perspective), len(set(perspective))))
-        
+        logging.debug('3. Agent {}: len perspective = {} ({})'.format(self.agent, len(perspective), len(set(perspective))))
+
+
         # 4. remove duplicates
         persp_no_dupl = []
         for p in perspective:
             if not p in persp_no_dupl:
                 persp_no_dupl.append(p)
         perspective = persp_no_dupl
-        # DEBUG
-        print('4. Agent {}: len perspective = {} ({})'.format(self.agent, len(perspective), len(set(perspective))))
-                
+        logging.debug('4. Agent {}: len perspective = {} ({})'.format(self.agent, len(perspective), len(set(perspective))))
+
+
         # 5. update
         self.conversation.contribute(
             contribution=perspective,
@@ -315,6 +313,7 @@ class ListeningLMAgent(AbstractLMAgent,LMUtilitiesMixIn):
             agent=self.agent,
             col="perspective"
         )
+
         
         # 6. update timestamps
         timestamps = self.conversation.get(agent=self.agent, t=t-1, col='timestamps')
@@ -344,32 +343,33 @@ class ListeningLMAgent(AbstractLMAgent,LMUtilitiesMixIn):
         weight = lambda tt,i: dep_exp**(t-tt-1) * (sc_fact if i==self.agent else 1)
         weights = [(tt,pp[1]) for pp,tt in zip(perspective,timestamps)] # tuples of (time-stamp, author)
         weights = [weight(tt,i) for tt,i in weights] 
-        mean_weights = sum(weights)/len(weights)
 
-        # rescale weights acc to confirmation bias
-        #   rescaling reflects relevance confirmation of current
-        #   normalized belief by perspective - post
-        if self.perspective_expansion_method=='confirmation_bias' and False:
-            x0 = self.conversation.get(t=0,agent=self.agent,col="polarity") # baseline belief
-            cb_exp = self.conversation.global_parameters.get('conf_bias_exponent') # exponent
-            
-            ## elicit opinion batch
-            #persp_batch = [perspective[:i]+perspective[i+1:] for i in range(len(perspective))]
-            persp_batch = [[p] for p in perspective]
-            persp_batch = [perspective] + persp_batch # add current perspective to batch
-            op_batch, _  = self.elicit_opinion_batch(persp_batch)
-            #print(op_batch)
-            opinion = op_batch[0] # opinion given default perspective
-            op_batch = op_batch[1:] # opinions given perspective - indivdual post
-            def conf(x):
-                c = np.log(x)-np.log(x0) if opinion>x0 else np.log(x0)-np.log(x)
-                return c
-            weights_conf = [conf(x) for x in op_batch]  
-            # add disconf values to weights
-            weights = [w1+w2 for w1,w2 in zip(weights, weights_conf)]        
-            # finally, mean-rescale:    
-            mean_new_weights = sum(weights)/len(weights) 
-            weights = [(mean_weights/mean_new_weights)*w for w in weights]
+
+        ## rescale weights acc to confirmation bias
+        ##   rescaling reflects relevance confirmation of current
+        ##   normalized belief by perspective - post
+        #mean_weights = sum(weights)/len(weights)
+        #if self.perspective_expansion_method=='confirmation_bias':
+        #    x0 = self.conversation.get(t=0,agent=self.agent,col="polarity") # baseline belief
+        #    cb_exp = self.conversation.global_parameters.get('conf_bias_exponent') # exponent
+        #    
+        #    ## elicit opinion batch
+        #    #persp_batch = [perspective[:i]+perspective[i+1:] for i in range(len(perspective))]
+        #    persp_batch = [[p] for p in perspective]
+        #    persp_batch = [perspective] + persp_batch # add current perspective to batch
+        #    op_batch, _  = self.elicit_opinion_batch(persp_batch)
+        #    #print(op_batch)
+        #    opinion = op_batch[0] # opinion given default perspective
+        #    op_batch = op_batch[1:] # opinions given perspective - indivdual post
+        #    def conf(x):
+        #        c = np.log(x)-np.log(x0) if opinion>x0 else np.log(x0)-np.log(x)
+        #        return c
+        #    weights_conf = [conf(x) for x in op_batch]  
+        #    # add disconf values to weights
+        #    weights = [w1+w2 for w1,w2 in zip(weights, weights_conf)]        
+        #    # finally, mean-rescale:    
+        #    mean_new_weights = sum(weights)/len(weights) 
+        #    weights = [(mean_weights/mean_new_weights)*w for w in weights]
 
 
         # sample new perspective according to weights
