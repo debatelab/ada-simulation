@@ -314,7 +314,7 @@ class ListeningLMAgent(AbstractLMAgent,LMUtilitiesMixIn):
             col="perspective"
         )
 
-        
+
         # 6. update timestamps
         timestamps = self.conversation.get(agent=self.agent, t=t-1, col='timestamps')
         timestamps = [timestamps[i] for i,p in enumerate(perspective_old) if p in perspective] # contract
@@ -474,8 +474,9 @@ class ListeningLMAgent(AbstractLMAgent,LMUtilitiesMixIn):
                 agent=self.agent,
                 col="peers"
             )
-        # exclude agent herself
-        peers = [i for i in peers if i!=self.agent]        
+
+        # we don't exclude agent herself at this stage
+        # peers = [i for i in peers if i!=self.agent]        
         peer_posts = []
         for peer in peers:
             ppersp = self.conversation.get(
