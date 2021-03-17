@@ -408,7 +408,7 @@ class ListeningLMAgent(AbstractLMAgent,LMUtilitiesMixIn):
             op_batch = op_batch[1:] # opinions given perspective + indivdual peer post
             def conf(x):
                 #c = (x-x0)/(opinion-x0)
-                c = x-opinion if opinion>x0 else opinion-x
+                c = x-x0 if opinion>x0 else x0-x
                 c = 0 if c<0 else c
                 return c
             #print(x0)
