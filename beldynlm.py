@@ -391,7 +391,8 @@ class ListeningLMAgent(AbstractLMAgent,LMUtilitiesMixIn):
         peer_posts = [p for p in peer_posts if not p in perspective] # exclude posts already in perspective
 
         # DEBUG
-        print('Agent {}: len perspective = {},  len peer posts = {}.'.format(self.agent, len(perspective), len(peer_posts)))
+        print('Agent {}: perspective = {} ({}), peer posts = {} ().'.format(self.agent, len(perspective), len(set(perspective)), len(peer_posts), len(set(peer_posts))))
+        
 
         # determine weights for selecting new posts for perspective according to perspective_expansion_method
         if self.perspective_expansion_method=='random':
