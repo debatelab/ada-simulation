@@ -11,7 +11,7 @@ kialo_path = '/Users/ggbetz/Documents/Philosophie/vortraege_paper/2019/Artificia
 topic = {
         'id': 'compulsory_voting',
         'claims': {
-            'connector': ' And therefore, all in all,',
+            'connector': 'I more or less agree with what my peers are saying here. And therefore, all in all,',
             'pro': [' compulsory voting is a pretty good idea, and I am for compulsory voting.'],
             'con': [' compulsory voting is a really bad idea, and I am against compulsory voting.']
         },
