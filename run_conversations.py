@@ -22,9 +22,10 @@ from beldynlm import *
 
 
 parser = argparse.ArgumentParser()
+parser.add_argument("--model", help="hugging face model'")
 parser.add_argument("--ensemble_id", help="also used as results folder'")
 parser.add_argument("--run_id", help="results file name")
-parser.add_argument("--agent_type", help="'listening' or 'generating'")
+parser.add_argument("--agent_type", help="'listening' or 'generating' or 'formal'")
 parser.add_argument("--topic", help="topic file (json)")
 parser.add_argument("--n_agents", help="number of agents", type=int)
 parser.add_argument("--max_t", help="number of time steps to simulate", type=int)
@@ -33,7 +34,8 @@ parser.add_argument("--context_size", help="size of perspective (max posts)", ty
 parser.add_argument("--self_confidence", help="factor that controls forgetting", type=int)
 parser.add_argument("--perspective_expansion_method", help="'random' or 'confirmation_bias'")
 parser.add_argument("--peer_selection_method", help="'all_neighbors' or 'bounded_confidence'")
-parser.add_argument("--epsilon", help="epsilon, used only with bounded_confidence", type=int)
+parser.add_argument("--conf_bias_exponent", help="conf_bias_exponent, used only with confirmation_bias", type=float)
+parser.add_argument("--epsilon", help="epsilon, used only with bounded_confidence", type=float)
 args = parser.parse_args()
 
 ENSEMBLE_ID = args.ensemble_id
@@ -44,6 +46,7 @@ if not os.path.exists(RESULT_DIR):
     
     
 global_parameters = {
+    'model':args.model if args.model else 'distilgpt2',
     'topic':args.topic if args.topic else 'topics/compulsory_voting_polarized.json',
     'agent_type':args.agent_type if args.agent_type else 'listening',
     'n_agents':args.n_agents if args.n_agents else 15,
@@ -55,7 +58,7 @@ global_parameters = {
     'self_confidence':args.self_confidence if args.self_confidence else 1,  
     'n_gram_prohibition':5,  
     'perspective_expansion_method':args.perspective_expansion_method if args.perspective_expansion_method else 'random', 
-    'conf_bias_exponent':5,
+    'conf_bias_exponent':args.conf_bias_exponent if args.conf_bias_exponent else 50,
     'peer_selection_method':args.peer_selection_method if args.peer_selection_method else 'all_neighbors', 
     'fwd_batch_size':4
 }
@@ -87,9 +90,9 @@ decoding_parameters = {
 #       LM        #
 ###################
 
-tokenizer = GPT2Tokenizer.from_pretrained('gpt2-large')
+tokenizer = GPT2Tokenizer.from_pretrained(global_parameters.get('model'))
 tokenizer.pad_token = tokenizer.eos_token
-model = GPT2LMHeadModel.from_pretrained('gpt2-large')
+model = GPT2LMHeadModel.from_pretrained(global_parameters.get('model'))
 model.to("cuda")
 
 
