@@ -335,6 +335,7 @@ class ListeningLMAgent(AbstractLMAgent,LMUtilitiesMixIn):
         weight = lambda tt,i: dep_exp**(t-tt-1) * (sc_fact if i==self.agent else 1)
         weights = [(tt,pp[1]) for pp,tt in zip(perspective,timestamps)] # tuples of (time-stamp, author)
         weights = [weight(tt,i) for tt,i in weights] 
+        mean_weights = sum(weights)/len(weights)
 
         # rescale weights acc to confirmation bias
         #   rescaling reflects relevance confirmation of current
@@ -357,9 +358,9 @@ class ListeningLMAgent(AbstractLMAgent,LMUtilitiesMixIn):
             weights_conf = [conf(x) for x in op_batch]  
             # add disconf values to weights
             weights = [w1+w2 for w1,w2 in zip(weights, weights_conf)]        
-            # finally, rescale:          
-            max_weight = max(weights)
-            weights = [w/max_weight for w in weights]
+            # finally, mean-rescale:    
+            mean_new_weights = sum(weights)/len(weights) 
+            weights = [(mean_weights/mean_new_weights)*w for w in weights]
 
 
         # sample new perspective according to weights
@@ -388,10 +389,6 @@ class ListeningLMAgent(AbstractLMAgent,LMUtilitiesMixIn):
         # peer posts
         peer_posts = self.get_peer_posts(t) # all posts from which new posts that will be added to perspective are chosen
         peer_posts = [p for p in peer_posts if not p in perspective] # exclude posts already in perspective
-
-        # append all peer posts if max perspective size allows 
-        if len(peer_posts)+len(perspective) <= size:
-            return peer_posts + perspective
 
         # determine weights for selecting new posts for perspective according to perspective_expansion_method
         if self.perspective_expansion_method=='random':
