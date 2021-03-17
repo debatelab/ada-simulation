@@ -431,9 +431,20 @@ class ListeningLMAgent(AbstractLMAgent,LMUtilitiesMixIn):
             print('Unknown perspective_expansion_method, using uniform weights')
             weights = [1]*len(peer_posts)
 
-        peer_posts = random.choices(peer_posts, k=(size-len(perspective)), weights=weights)
+
+        # fill up perspective with peer posts given weights
+        ppws = list(set(zip(peer_posts,weights)))
+        ppws = [(pp,w) for pp,w in ppws if w>0] # delete zero-weight entries
+        if len(ppws)<=(size-len(perspective)):
+            ## add all non-zero weight entries
+            perspective = perspective + [p for p,_ in ppws]
+        else:
+            while len(perspective)<size:
+                p_new:List[Tuple] = random.choices(ppws, k=1, weights=[w for _,w in ppws]) # draw new post
+                perspective = perspective + [p_new[0][0]] # add post to perspective
+                ppws = [pw for pw in ppws if not pw in p_new] # remove post from ppws (-> sampling without replacement)
                 
-        return perspective + peer_posts
+        return perspective
 
     
 
