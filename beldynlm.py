@@ -449,7 +449,7 @@ class ListeningLMAgent(AbstractLMAgent,LMUtilitiesMixIn):
                 ppws = [pw for pw in ppws if not pw in p_new] # remove post from ppws (-> sampling without replacement)
                 
         # DEBUG
-        print('Agent {}: len perspective after expansion= {}'.format(self.agent, len(perspective)))
+        print('Agent {}: len perspective after expansion= {} ()'.format(self.agent, len(perspective), len(set(perspective))))
 
         return perspective
 
