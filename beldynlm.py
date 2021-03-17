@@ -330,6 +330,7 @@ class ListeningLMAgent(AbstractLMAgent,LMUtilitiesMixIn):
             print('error, timestamps and perspective of unequal length!')
             return perspective
     
+        # weights are used to determine probability that post is retained and not forgotten
         # relevance deprecation and self-confidence
         weight = lambda tt,i: dep_exp**(t-tt-1) * (sc_fact if i==self.agent else 1)
         weights = [(tt,pp[1]) for pp,tt in zip(perspective,timestamps)] # tuples of (time-stamp, author)
@@ -343,16 +344,17 @@ class ListeningLMAgent(AbstractLMAgent,LMUtilitiesMixIn):
             cb_exp = self.conversation.global_parameters.get('conf_bias_exponent') # exponent
             
             ## elicit opinion batch
-            persp_batch = [perspective[:i]+perspective[i+1:] for i in range(len(perspective))]
+            #persp_batch = [perspective[:i]+perspective[i+1:] for i in range(len(perspective))]
+            persp_batch = [[p] for p in perspective]
             persp_batch = [perspective] + persp_batch # add current perspective to batch
             op_batch, _  = self.elicit_opinion_batch(persp_batch)
             #print(op_batch)
             opinion = op_batch[0] # opinion given default perspective
             op_batch = op_batch[1:] # opinions given perspective - indivdual post
-            def disconf(x):
-                c = opinion-x if opinion>x0 else x-opinion
+            def conf(x):
+                c = np.log(x)-np.log(x0) if opinion>x0 else np.log(x0)-np.log(x)
                 return c
-            weights_conf = [disconf(x) for x in op_batch]  
+            weights_conf = [conf(x) for x in op_batch]  
             # add disconf values to weights
             weights = [w1+w2 for w1,w2 in zip(weights, weights_conf)]        
             # finally, rescale:          
