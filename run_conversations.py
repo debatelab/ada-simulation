@@ -36,6 +36,7 @@ parser.add_argument("--perspective_expansion_method", help="'random' or 'confirm
 parser.add_argument("--peer_selection_method", help="'all_neighbors' or 'bounded_confidence'")
 parser.add_argument("--conf_bias_exponent", help="conf_bias_exponent, used only with confirmation_bias", type=float)
 parser.add_argument("--epsilon", help="epsilon, used only with bounded_confidence", type=float)
+parser.add_argument("--relevance_deprecation", help="relevance_deprecation", type=float)
 args = parser.parse_args()
 
 ENSEMBLE_ID = args.ensemble_id
@@ -54,8 +55,8 @@ global_parameters = {
     'n_initial_posts':args.n_initial_posts if args.n_initial_posts else 5, 
     'initial_neighb-peer_ratio':.5, 
     'context_size':args.context_size if args.context_size else 8, 
-    'relevance_deprecation':.9,
-    'self_confidence':args.self_confidence if args.self_confidence else 1,  
+    'relevance_deprecation':args.context_size if args.context_size else .95,
+    'self_confidence':args.relevance_deprecation if args.relevance_deprecation else 1,  
     'n_gram_prohibition':5,  
     'perspective_expansion_method':args.perspective_expansion_method if args.perspective_expansion_method else 'random', 
     'conf_bias_exponent':args.conf_bias_exponent if args.conf_bias_exponent else 50,
@@ -104,10 +105,7 @@ model.to("cuda")
 conversation = Conversation(global_parameters=global_parameters)
 conversation.load_topic(global_parameters.get('topic'), tokenizer=tokenizer)
 
-if global_parameters.get('agent_type')=='listening':
-    LMAgent = ListeningLMAgent
-elif global_parameters.get('agent_type')=='generating':
-    LMAgent = GeneratingLMAgent
+LMAgent = GeneratingLMAgent
 
 agents = []
 for i in range(global_parameters['n_agents']):
