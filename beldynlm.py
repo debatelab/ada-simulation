@@ -633,5 +633,20 @@ class GeneratingLMAgent(ListeningLMAgent):
         
 
     
-    
-        
+class FormalModelAgent(ListeningLMAgent):
+    """modeling posts and opinions purely formally"""
+
+    def elicit_opinion(self, perspective: List[Tuple[int]]):
+        reason_strengths:dict = self.conversation.reason_strengths
+        if reason_strengths==None:
+            print("Error: reason_strengths of conversation not initialized!")
+        pp_rs = [reason_strengths(p) for p in perspective]
+        return np.mean(pp_rs), 1
+
+    def elicit_opinion_batch(self, perspectives:List[List[Tuple[int]]]):
+        opinions = [self.elicit_opinion(pp) for pp in perspectives]
+        polarity_batch = [x for x,_ in opinions]
+        salience_batch = [y for _,y in opinions]
+        return polarity_batch, salience_batch
+
+
