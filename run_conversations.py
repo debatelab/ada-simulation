@@ -68,7 +68,7 @@ peer_selection_parameters = [
      },
      {
          'id':'bounded_confidence',
-         'epsilon': args.epslion if args.epsilon else 0.01
+         'epsilon': args.epsilon if args.epsilon else 0.01
      }
 ]
 
