@@ -6,7 +6,6 @@ import random
 random.seed(a=39562930121113583084284)
 from tqdm import tqdm
 import logging
-from IPython.display import display, HTML
 
 import os
 import os.path
@@ -14,7 +13,6 @@ import argparse
 
 from nltk import ngrams
 
-import torch
 from transformers import GPT2Tokenizer, GPT2LMHeadModel
 
 from beldynlm import *
