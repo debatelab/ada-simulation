@@ -160,7 +160,7 @@ conversation.save(
     path=RESULT_DIR, 
     froot=ENSEMBLE_ID+'_'+RUN_ID, 
     overwrite=True, 
-    config=[decoding_parameters,peer_selection_parameters]
+    config={'decoding_parameters':decoding_parameters,'peer_selection_parameters':peer_selection_parameters}
 )
 
 
