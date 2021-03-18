@@ -154,7 +154,7 @@ for t in tqdm(range(global_parameters['n_initial_posts'],global_parameters['max_
 ###################
 
 RUN_ID = args.run_id
-RESULT_DIR = 'results/'+ENSEMBLE_ID
+RESULT_DIR = 'results/'+ENSEMBLE_ID+'/'
 
 conversation.save(
     path=RESULT_DIR, 
