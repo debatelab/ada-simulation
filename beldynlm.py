@@ -361,6 +361,8 @@ class ListeningLMAgent(AbstractLMAgent,LMUtilitiesMixIn):
             for p,w in zip(perspective,weights):
                 if random.uniform(0,1)<w:
                     new_perspective.append(p)
+        else:
+            new_perspective = perspective
 
         # if no post has been forgotten so far, drop m_loss posts
         if len(perspective)==len(new_perspective) and len(perspective)>0:
