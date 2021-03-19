@@ -386,13 +386,13 @@ class ListeningLMAgent(AbstractLMAgent,LMUtilitiesMixIn):
         peer_posts = [p for p in peer_posts if not p in persp_posts] # exclude posts already in perspective
 
         # DEBUG
-        #print('Agent {}: perspective = {} ({}), peer posts = {} ({}).'.format(self.agent, len(perspective), len(set(perspective)), len(peer_posts), len(set(peer_posts))))
-        
+        #print('Agent {}: perspective = {} ({}), peer posts = {} ({}).'.format(self.agent, len(perspective), len(set(perspective)), len(peer_posts), len(set(peer_posts))))        
 
         # determine weights for selecting new posts for perspective according to perspective_expansion_method
         if self.perspective_expansion_method=='random':
             # uniform weights
             weights = [1]*len(peer_posts)
+
         elif self.perspective_expansion_method=='confirmation_bias':
             # weights reflect relevance confirmation of current normalized belief by post
             x0 = self.conversation.get(t=0,agent=self.agent,col="polarity") # baseline belief
@@ -402,30 +402,51 @@ class ListeningLMAgent(AbstractLMAgent,LMUtilitiesMixIn):
             persp_batch = [persp_posts + [pp] for pp in peer_posts]
             persp_batch = [persp_posts] + persp_batch # add contracted perspective to batch
             op_batch, _  = self.elicit_opinion_batch(persp_batch)
-            #print(op_batch)
             opinion = op_batch[0] # opinion given contracted perspective, no peer post added
             op_batch = op_batch[1:] # opinions given perspective + indivdual peer post
+
+            ## weights depend on confirmation
             def conf(x):
-                #c = (x-x0)/(opinion-x0)
                 c = x-x0 if opinion>x0 else x0-x
                 c = 0 if c<0 else c
                 return c
-            #print(x0)
-            #print(cb_exp)
             weights = [conf(x)**cb_exp for x in op_batch]
-            #print(weights)
-            
-            #opinion_perspective = self.elicit_opinion(perspective)[0] # opinion given contracted perspective, no peer post added
-            #def conf(p:(int)):
-            #    opinion = lambda persp: self.elicit_opinion(persp)[0] # get polarity
-            #    c = (opinion(perspective+[p])-x0)/(opinion_perspective-x0)
-            #    c = 0 if c<0 else c
-            #    return c                
-            #weights = [(conf(p)**cb_exp) for p in peer_posts]            
             
             # are some weights >0? if not, use uniform positive weights
             if all(w==0 for w in weights):
                 weights = [1]*len(peer_posts)
+
+        elif self.perspective_expansion_method=='confirmation_bias':
+            # homophily_exponent
+            h_exp = self.conversation.global_parameters.get('homophily_exponent') # exponent
+            # all peers
+            peers = self.conversation.get(
+                t=t,
+                agent=self.agent,
+                col="peers"
+            )
+            # opinion of agent i
+            opinion = lambda i: self.conversation.get(agent=i, t=t-1, col='polarity')
+            # similarity of agent i with self.agent
+            sim = lambda i: 1-abs(opinion(i)-opinion(self.agent))
+            peer_weights = {p:sim(p)**h_exp for p in peers}
+            # newly collect peer posts and assign weights acc. to max peer-weight
+            ppws_dict = {}
+            for peer in peers:
+                ppersp:Perspective = self.conversation.get(
+                    t=t-1,
+                    agent=peer,
+                    col="perspective"
+                )
+                for post in [pp['post'] for pp in ppersp]:
+                    if post in ppws_dict:
+                        if peer_weights(peer)>ppws_dict[post]:
+                            ppws_dict[post] = peer_weights(peer)
+                    else:
+                        ppws_dict[post] = peer_weights(peer)
+            peer_posts = list(ppws_dict.keys())
+            weights = [ppws_dict[post] for post in peer_posts]
+
         else:
             print('Unknown perspective_expansion_method, using uniform weights')
             weights = [1]*len(peer_posts)
