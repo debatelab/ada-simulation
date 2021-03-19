@@ -433,11 +433,15 @@ class ListeningLMAgent(AbstractLMAgent,LMUtilitiesMixIn):
                 agent=self.agent,
                 col="peers"
             )
+            # exclude agent
+            peers = [p for p in peers if p!=self.agent]
             # opinion of agent i
             opinion = lambda i: self.conversation.get(agent=i, t=t-1, col='polarity')
             # similarity of agent i with self.agent
-            sim = lambda i: 0.5*(2-abs(opinion(i)-opinion(self.agent)))
+            sim = lambda i: (1-abs(opinion(i)-opinion(self.agent)))
             peer_weights = {p:sim(p)**h_exp for p in peers}
+            peer_weights = {p:peer_weights[p]/sum(peer_weights.values()) for p in peers}
+
             # newly collect peer posts and assign weights acc. to max peer-weight
             ppws_dict = {}
             for peer in peers:
