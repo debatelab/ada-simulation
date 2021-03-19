@@ -284,17 +284,17 @@ class ListeningLMAgent(AbstractLMAgent,LMUtilitiesMixIn):
     def update_perspective(self, t: int):
         # 1. get previous perspective
         perspective_old:Perspective = self.conversation.get(agent=self.agent, t=t-1, col='perspective')
-        logging.debug('1. Agent {}: len perspective = {} ({})'.format(self.agent, len(perspective_old), len(set(perspective_old))))
+        logging.debug('1. Agent {}: len perspective = {} ({})'.format(self.agent, len(perspective_old), len(set([pp['post'] for pp in perspective_old]))))
 
 
         # 2. forget some former posts
         perspective:Perspective = self.concat_persp(perspective_old, t=t)
-        logging.debug('2. Agent {}: len perspective = {} ({})'.format(self.agent, len(perspective), len(set(perspective))))
+        logging.debug('2. Agent {}: len perspective = {} ({})'.format(self.agent, len(perspective), len(set([pp['post'] for pp in perspective]))))
 
 
         # 3. fill-in missing gaps
         perspective:Perspective = self.expand_persp(perspective, t=t)
-        logging.debug('3. Agent {}: len perspective = {} ({})'.format(self.agent, len(perspective), len(set(perspective))))
+        logging.debug('3. Agent {}: len perspective = {} ({})'.format(self.agent, len(perspective), len(set([pp['post'] for pp in perspective]))))
 
 
         # 4. remove duplicates
@@ -303,7 +303,7 @@ class ListeningLMAgent(AbstractLMAgent,LMUtilitiesMixIn):
             if not p in persp_no_dupl:
                 persp_no_dupl.append(p)
         perspective = persp_no_dupl
-        logging.debug('4. Agent {}: len perspective = {} ({})'.format(self.agent, len(perspective), len(set(perspective))))
+        logging.debug('4. Agent {}: len perspective = {} ({})'.format(self.agent, len(perspective), len(set([pp['post'] for pp in perspective]))))
 
 
         # 5. update
