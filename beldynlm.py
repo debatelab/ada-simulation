@@ -227,7 +227,7 @@ class ListeningLMAgent(AbstractLMAgent,LMUtilitiesMixIn):
         for t in range(1,initial_steps):
             post_refs = [(i,j) for i in range(t) for j in initial_peers]
             if len(post_refs)>self.conversation.global_parameters.get('context_size'):
-                post_refs = random.sample(perspective,k=self.conversation.global_parameters.get('context_size'))
+                post_refs = random.sample(post_refs,k=self.conversation.global_parameters.get('context_size'))
 
             perspective:Perspective = [{'post':pr,'timestamp':t} for pr in post_refs]
                     
