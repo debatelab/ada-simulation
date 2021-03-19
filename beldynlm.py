@@ -528,7 +528,7 @@ class ListeningLMAgent(AbstractLMAgent,LMUtilitiesMixIn):
 
                 
 #    def elicit_opinion_batch(self, perspectives:[[(int)]]):
-    def elicit_opinion_batch(self, perspectives:List[Perspective]):
+    def elicit_opinion_batch(self, perspectives:List[List[Tuple[int]]]):
         
         batch_size = len(perspectives)
         fwd_batch_size = self.conversation.global_parameters.get('fwd_batch_size')
@@ -536,9 +536,8 @@ class ListeningLMAgent(AbstractLMAgent,LMUtilitiesMixIn):
         
         token_ids_cond_batch = []
         # collect_and_glue_perspective_tokens
-        for perspective in perspectives:
+        for persp_posts in perspectives:
             # list of posts referenced in current perspective
-            persp_posts: List[Tuple[int]] = [pp['post'] for pp in perspective]
             token_ids_cond = self.conversation.topic['intro_tokens']
             for tt,i in persp_posts:
                 token_ids_cond = token_ids_cond + self.conversation.get(agent=i, t=tt, col='tokens')
@@ -659,8 +658,8 @@ class FormalModelAgent(ListeningLMAgent):
         pp_rs = [reason_strengths.get(p['post']) for p in perspective]
         return np.mean(pp_rs), 1
 
-    def elicit_opinion_batch(self, perspectives:List[Perspective]):
-        opinions = [self.elicit_opinion(pp) for pp in perspectives]
+    def elicit_opinion_batch(self, perspectives:List[Tuple[int]]):
+        opinions = [self.elicit_opinion([{'post':post,'timestamp':0} for post in pp]) for pp in perspectives]
         polarity_batch = [x for x,_ in opinions]
         salience_batch = [y for _,y in opinions]
         return polarity_batch, salience_batch
