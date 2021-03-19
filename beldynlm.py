@@ -439,25 +439,17 @@ class ListeningLMAgent(AbstractLMAgent,LMUtilitiesMixIn):
             opinion = lambda i: self.conversation.get(agent=i, t=t-1, col='polarity')
             # similarity of agent i with self.agent
             sim = lambda i: (1-abs(opinion(i)-opinion(self.agent)))
-            peer_weights = {p:sim(p)**h_exp for p in peers}
-            peer_weights = {p:peer_weights[p]/sum(peer_weights.values()) for p in peers}
-
-            # newly collect peer posts and assign weights acc. to peer-weight (sum!)
-            ppws_dict = {}
-            for peer in peers:
-                w = peer_weights[peer]
-                ppersp:Perspective = self.conversation.get(
+            peer_weights = [sim(p)**h_exp for p in peers]
+            peer_weights = [w/sum(peer_weights) for w in peer_weights]
+            # choose partner to interact with            
+            partner = random.choices(peers, k=1, weights=peer_weights)[0]
+            partner_p:Perspective = self.conversation.get(
                     t=t-1,
-                    agent=peer,
+                    agent=partner,
                     col="perspective"
                 )
-                for post in [pp['post'] for pp in ppersp]:
-                    if post in ppws_dict:
-                        ppws_dict[post] += w
-                    else:
-                        ppws_dict[post] = w
-            peer_posts = list(ppws_dict.keys())
-            weights = [ppws_dict[post] for post in peer_posts]
+            # set weight of all partner posts to 1, others to 0
+            weights = [1 if p in partner_p else 0 for p in peer_posts]
 
         else:
             print('Unknown perspective_expansion_method, using uniform weights')
