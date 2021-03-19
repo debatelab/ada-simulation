@@ -321,6 +321,7 @@ class ListeningLMAgent(AbstractLMAgent,LMUtilitiesMixIn):
         perspective:Perspective = perspective
         dep_exp = self.conversation.global_parameters.get('relevance_deprecation')
         sc_fact = self.conversation.global_parameters.get('self_confidence')
+        m_loss = self.conversation.global_parameters.get('memory_loss')
     
         # weights are used to determine probability that post is retained and not forgotten
         # relevance deprecation and self-confidence
@@ -356,13 +357,14 @@ class ListeningLMAgent(AbstractLMAgent,LMUtilitiesMixIn):
 
         # sample new perspective according to weights
         new_perspective:Perspective = []
-        for p,w in zip(perspective,weights):
-            if random.uniform(0,1)<w:
-                new_perspective.append(p)
+        if m_loss==0:
+            for p,w in zip(perspective,weights):
+                if random.uniform(0,1)<w:
+                    new_perspective.append(p)
 
-        # if no post has been forgotten so far, drop at least one post
+        # if no post has been forgotten so far, drop m_loss posts
         if len(perspective)==len(new_perspective) and len(perspective)>0:
-            p_drop = random.choices(perspective, k=1, weights=[1-w for w in weights])
+            p_drop = random.choices(perspective, k=m_loss, weights=[1-w for w in weights])
             new_perspective = [p for p in perspective if not p in p_drop]                
                 
         # increase time-stamp in all posts retained
