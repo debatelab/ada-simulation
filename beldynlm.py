@@ -370,8 +370,8 @@ class ListeningLMAgent(AbstractLMAgent,LMUtilitiesMixIn):
             new_perspective = [p for p in perspective if not p in p_drop]                
                 
         # increase time-stamp in all posts retained
-        for pp in new_perspective:
-            pp['timestamp'] = pp['timestamp']+1
+
+        new_perspective = [{'post':pp['post'],'timestamp':pp['timestamp']+1} for pp in new_perspective]
 
         return new_perspective
 
