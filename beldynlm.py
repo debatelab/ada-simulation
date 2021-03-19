@@ -433,6 +433,7 @@ class ListeningLMAgent(AbstractLMAgent,LMUtilitiesMixIn):
             # newly collect peer posts and assign weights acc. to max peer-weight
             ppws_dict = {}
             for peer in peers:
+                w = peer_weights[peer]
                 ppersp:Perspective = self.conversation.get(
                     t=t-1,
                     agent=peer,
@@ -440,10 +441,10 @@ class ListeningLMAgent(AbstractLMAgent,LMUtilitiesMixIn):
                 )
                 for post in [pp['post'] for pp in ppersp]:
                     if post in ppws_dict:
-                        if peer_weights(peer)>ppws_dict[post]:
-                            ppws_dict[post] = peer_weights(peer)
+                        if w>ppws_dict[post]:
+                            ppws_dict[post] = w
                     else:
-                        ppws_dict[post] = peer_weights(peer)
+                        ppws_dict[post] = w
             peer_posts = list(ppws_dict.keys())
             weights = [ppws_dict[post] for post in peer_posts]
 
