@@ -18,7 +18,7 @@ from transformers import GPT2Tokenizer, GPT2LMHeadModel
 # Type Aliases
 class PostRefs(TypedDict):
     post: Tuple[int, int]
-    timestamp: int
+    timestamp: int # used as recency, 0 meaning most recent
 Perspective = List[PostRefs]
 
 
@@ -229,7 +229,7 @@ class ListeningLMAgent(AbstractLMAgent,LMUtilitiesMixIn):
             if len(post_refs)>self.conversation.global_parameters.get('context_size'):
                 post_refs = random.sample(post_refs,k=self.conversation.global_parameters.get('context_size'))
 
-            perspective:Perspective = [{'post':pr,'timestamp':t} for pr in post_refs]
+            perspective:Perspective = [{'post':pr,'timestamp':0} for pr in post_refs]
                     
             self.conversation.contribute(
                 contribution=perspective,
@@ -324,7 +324,7 @@ class ListeningLMAgent(AbstractLMAgent,LMUtilitiesMixIn):
     
         # weights are used to determine probability that post is retained and not forgotten
         # relevance deprecation and self-confidence
-        weight = lambda pp: dep_exp**(t-pp['timestamp']-1) * (sc_fact if pp['post'][1]==self.agent else 1)
+        weight = lambda pp: dep_exp**(pp['timestamp']) * (sc_fact if pp['post'][1]==self.agent else 1)
         weights = [weight(pp) for pp in perspective] 
 
         # rescale weights acc to confirmation bias
@@ -365,6 +365,10 @@ class ListeningLMAgent(AbstractLMAgent,LMUtilitiesMixIn):
             p_drop = random.choices(perspective, k=1, weights=[1-w for w in weights])
             new_perspective = [p for p in perspective if not p in p_drop]                
                 
+        # increase time-stamp in all posts retained
+        for pp in new_perspective:
+            pp['timestamp'] = pp['timestamp']+1
+
         return new_perspective
 
 
@@ -376,7 +380,7 @@ class ListeningLMAgent(AbstractLMAgent,LMUtilitiesMixIn):
         # add recent contribution of agent herself
         if len(perspective)<size:
             if self.conversation.get(agent=self.agent, t=t-1, col='post') != None:
-                perspective = perspective + [{'post':(t-1,self.agent),'timestamp':t}]
+                perspective = perspective + [{'post':(t-1,self.agent),'timestamp':0}]
         
         # list of posts referenced in current perspective
         persp_posts = [pp['post'] for pp in perspective]
@@ -458,11 +462,11 @@ class ListeningLMAgent(AbstractLMAgent,LMUtilitiesMixIn):
         ppws = [(pp,w) for pp,w in ppws if w>0] # delete zero-weight entries
         if len(ppws)<=(size-len(perspective)):
             ## add all non-zero weight entries
-            perspective = perspective + [{'post':p,'timestamp':t} for p,_ in ppws]
+            perspective = perspective + [{'post':p,'timestamp':0} for p,_ in ppws]
         else:
             while len(perspective)<size:
                 p_new:List[Tuple] = random.choices(ppws, k=1, weights=[w for _,w in ppws]) # draw new post
-                perspective = perspective + [{'post':p_new[0][0],'timestamp':t}] # add post to perspective
+                perspective = perspective + [{'post':p_new[0][0],'timestamp':0}] # add post to perspective
                 ppws = [pw for pw in ppws if not pw in p_new] # remove post from ppws (-> sampling without replacement)
                 
         return perspective
