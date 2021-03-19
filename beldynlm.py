@@ -442,7 +442,7 @@ class ListeningLMAgent(AbstractLMAgent,LMUtilitiesMixIn):
             peer_weights = {p:sim(p)**h_exp for p in peers}
             peer_weights = {p:peer_weights[p]/sum(peer_weights.values()) for p in peers}
 
-            # newly collect peer posts and assign weights acc. to max peer-weight
+            # newly collect peer posts and assign weights acc. to peer-weight (sum!)
             ppws_dict = {}
             for peer in peers:
                 w = peer_weights[peer]
@@ -453,8 +453,7 @@ class ListeningLMAgent(AbstractLMAgent,LMUtilitiesMixIn):
                 )
                 for post in [pp['post'] for pp in ppersp]:
                     if post in ppws_dict:
-                        if w>ppws_dict[post]:
-                            ppws_dict[post] = w
+                        ppws_dict[post] += w
                     else:
                         ppws_dict[post] = w
             peer_posts = list(ppws_dict.keys())
