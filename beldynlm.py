@@ -3,7 +3,7 @@ import numpy as np
 import random
 import json
 
-from typing import Tuple, List
+from typing import TypedDict, Tuple, List
 
 import os
 import os.path
@@ -15,6 +15,11 @@ import torch
 from transformers import GPT2Tokenizer, GPT2LMHeadModel
 
 
+# Type Aliases
+class PostRefs(TypedDict):
+    post: Tuple[int, int]
+    timestamp: int
+Perspective = List[PostRefs]
 
 
 class Conversation:
@@ -25,7 +30,7 @@ class Conversation:
         self.global_parameters = global_parameters
         
         # set up the dataframe
-        columns = ['post','peers','perspective','timestamps','tokens','polarity','salience']
+        columns = ['post','peers','perspective','tokens','polarity','salience']
         steps = np.arange(global_parameters['max_t'])
         agents = np.arange(global_parameters['n_agents'])
         steps_agents = [
@@ -36,7 +41,6 @@ class Conversation:
         self.data = pd.DataFrame(np.zeros((global_parameters['max_t']*global_parameters['n_agents'], len(columns))), index=index, columns=columns)
         self.data = self.data.astype(object)
         self.data['perspective']=[[] for i in range(len(self.data))]
-        self.data['timestamps']=[[] for i in range(len(self.data))]
         self.data['peers']=[[] for i in range(len(self.data))]
         self.data['tokens']=[[] for i in range(len(self.data))]
         self.data['post']=[None for i in range(len(self.data))]
@@ -221,22 +225,18 @@ class ListeningLMAgent(AbstractLMAgent,LMUtilitiesMixIn):
         
         # initialize perspective from initial_peers
         for t in range(1,initial_steps):
-            perspective = [(i,j) for i in range(t) for j in initial_peers]
-            if len(perspective)>self.conversation.global_parameters.get('context_size'):
-                perspective = random.sample(perspective,k=self.conversation.global_parameters.get('context_size'))
+            post_refs = [(i,j) for i in range(t) for j in initial_peers]
+            if len(post_refs)>self.conversation.global_parameters.get('context_size'):
+                post_refs = random.sample(perspective,k=self.conversation.global_parameters.get('context_size'))
+
+            perspective:Perspective = [{'post':pr,'timestamp':t} for pr in post_refs]
+                    
             self.conversation.contribute(
                 contribution=perspective,
                 t=t,
                 agent=self.agent,
                 col="perspective"
             )
-            timestamps = [i for i, _ in perspective]
-            self.conversation.contribute(
-                contribution=timestamps,
-                t=t,
-                agent=self.agent,
-                col="timestamps"
-            )           
             
         
         # initialize posts from topic
@@ -283,22 +283,22 @@ class ListeningLMAgent(AbstractLMAgent,LMUtilitiesMixIn):
             
     def update_perspective(self, t: int):
         # 1. get previous perspective
-        perspective_old = self.conversation.get(agent=self.agent, t=t-1, col='perspective')
+        perspective_old:Perspective = self.conversation.get(agent=self.agent, t=t-1, col='perspective')
         logging.debug('1. Agent {}: len perspective = {} ({})'.format(self.agent, len(perspective_old), len(set(perspective_old))))
 
 
         # 2. forget some former posts
-        perspective = self.concat_persp(perspective_old, t=t)
+        perspective:Perspective = self.concat_persp(perspective_old, t=t)
         logging.debug('2. Agent {}: len perspective = {} ({})'.format(self.agent, len(perspective), len(set(perspective))))
 
 
         # 3. fill-in missing gaps
-        perspective = self.expand_persp(perspective, t=t)
+        perspective:Perspective = self.expand_persp(perspective, t=t)
         logging.debug('3. Agent {}: len perspective = {} ({})'.format(self.agent, len(perspective), len(set(perspective))))
 
 
         # 4. remove duplicates
-        persp_no_dupl = []
+        persp_no_dupl:Perspective = []
         for p in perspective:
             if not p in persp_no_dupl:
                 persp_no_dupl.append(p)
@@ -313,37 +313,19 @@ class ListeningLMAgent(AbstractLMAgent,LMUtilitiesMixIn):
             agent=self.agent,
             col="perspective"
         )
-
-
-        # 6. update timestamps
-        timestamps = self.conversation.get(agent=self.agent, t=t-1, col='timestamps')
-        timestamps = [timestamps[i] for i,p in enumerate(perspective_old) if p in perspective] # contract
-        timestamps = timestamps + [t]*(len(perspective)-len(timestamps))  # be careful here, new posts are always appended to perspective
-        self.conversation.contribute(
-            contribution=timestamps,
-            t=t,
-            agent=self.agent,
-            col="timestamps"
-        )
         
         
         
 
-    def concat_persp(self, perspective, t:int=0):
-        perspective = perspective
+    def concat_persp(self, perspective:Perspective, t:int=0) -> Perspective: 
+        perspective:Perspective = perspective
         dep_exp = self.conversation.global_parameters.get('relevance_deprecation')
         sc_fact = self.conversation.global_parameters.get('self_confidence')
-        timestamps = self.conversation.get(agent=self.agent, t=t-1, col='timestamps')
-        if len(perspective) != len(timestamps):
-            print('error, timestamps and perspective of unequal length!')
-            return perspective
     
         # weights are used to determine probability that post is retained and not forgotten
         # relevance deprecation and self-confidence
-        weight = lambda tt,i: dep_exp**(t-tt-1) * (sc_fact if i==self.agent else 1)
-        weights = [(tt,pp[1]) for pp,tt in zip(perspective,timestamps)] # tuples of (time-stamp, author)
-        weights = [weight(tt,i) for tt,i in weights] 
-
+        weight = lambda pp: dep_exp**(t-pp['timestamp']-1) * (sc_fact if pp['post'][1]==self.agent else 1)
+        weights = [weight(pp) for pp in perspective] 
 
         # rescale weights acc to confirmation bias
         #   rescaling reflects relevance confirmation of current
@@ -351,12 +333,12 @@ class ListeningLMAgent(AbstractLMAgent,LMUtilitiesMixIn):
         mean_weights = sum(weights)/len(weights)
         if self.perspective_expansion_method=='confirmation_bias':
             x0 = self.conversation.get(t=0,agent=self.agent,col="polarity") # baseline belief
-            cb_exp = self.conversation.global_parameters.get('conf_bias_exponent') # exponent
+            #cb_exp = self.conversation.global_parameters.get('conf_bias_exponent') # exponent
             
             ## elicit opinion batch
-            #persp_batch = [perspective[:i]+perspective[i+1:] for i in range(len(perspective))]
-            persp_batch = [[p] for p in perspective]
-            persp_batch = [perspective] + persp_batch # add current perspective to batch
+            persp_posts = [pp['post'] for pp in perspective]
+            persp_batch = [[p] for p in persp_posts]
+            persp_batch = [persp_posts] + persp_batch # add current perspective to batch
             op_batch, _  = self.elicit_opinion_batch(persp_batch)
             #print(op_batch)
             opinion = op_batch[0] # opinion given default perspective
@@ -373,7 +355,7 @@ class ListeningLMAgent(AbstractLMAgent,LMUtilitiesMixIn):
 
 
         # sample new perspective according to weights
-        new_perspective = []
+        new_perspective:Perspective = []
         for p,w in zip(perspective,weights):
             if random.uniform(0,1)<w:
                 new_perspective.append(p)
@@ -387,18 +369,21 @@ class ListeningLMAgent(AbstractLMAgent,LMUtilitiesMixIn):
 
 
     
-    def expand_persp(self, perspective, t:int=0):
-        perspective = perspective
+    def expand_persp(self, perspective:Perspective, t:int=0) -> Perspective:
+        perspective:Perspective = perspective
         size = self.conversation.global_parameters.get('context_size')
         
         # add recent contribution of agent herself
         if len(perspective)<size:
             if self.conversation.get(agent=self.agent, t=t-1, col='post') != None:
-                perspective = perspective + [(t-1,self.agent)]
+                perspective = perspective + [{'post':(t-1,self.agent),'timestamp':t}]
         
+        # list of posts referenced in current perspective
+        persp_posts = [pp['post'] for pp in perspective]
+
         # peer posts
         peer_posts = self.get_peer_posts(t) # all posts from which new posts that will be added to perspective are chosen
-        peer_posts = [p for p in peer_posts if not p in perspective] # exclude posts already in perspective
+        peer_posts = [p for p in peer_posts if not p in persp_posts] # exclude posts already in perspective
 
         # DEBUG
         #print('Agent {}: perspective = {} ({}), peer posts = {} ({}).'.format(self.agent, len(perspective), len(set(perspective)), len(peer_posts), len(set(peer_posts))))
@@ -414,8 +399,8 @@ class ListeningLMAgent(AbstractLMAgent,LMUtilitiesMixIn):
             cb_exp = self.conversation.global_parameters.get('conf_bias_exponent') # exponent
             
             ## elicit opinion batch
-            persp_batch = [perspective + [pp] for pp in peer_posts]
-            persp_batch = [perspective] + persp_batch # add contracted perspective to batch
+            persp_batch = [persp_posts + [pp] for pp in peer_posts]
+            persp_batch = [persp_posts] + persp_batch # add contracted perspective to batch
             op_batch, _  = self.elicit_opinion_batch(persp_batch)
             #print(op_batch)
             opinion = op_batch[0] # opinion given contracted perspective, no peer post added
@@ -451,11 +436,11 @@ class ListeningLMAgent(AbstractLMAgent,LMUtilitiesMixIn):
         ppws = [(pp,w) for pp,w in ppws if w>0] # delete zero-weight entries
         if len(ppws)<=(size-len(perspective)):
             ## add all non-zero weight entries
-            perspective = perspective + [p for p,_ in ppws]
+            perspective = perspective + [{'post':p,'timestamp':t} for p,_ in ppws]
         else:
             while len(perspective)<size:
                 p_new:List[Tuple] = random.choices(ppws, k=1, weights=[w for _,w in ppws]) # draw new post
-                perspective = perspective + [p_new[0][0]] # add post to perspective
+                perspective = perspective + [{'post':p_new[0][0],'timestamp':t}] # add post to perspective
                 ppws = [pw for pw in ppws if not pw in p_new] # remove post from ppws (-> sampling without replacement)
                 
         return perspective
@@ -479,12 +464,12 @@ class ListeningLMAgent(AbstractLMAgent,LMUtilitiesMixIn):
         # peers = [i for i in peers if i!=self.agent]        
         peer_posts = []
         for peer in peers:
-            ppersp = self.conversation.get(
+            ppersp:Perspective = self.conversation.get(
                 t=t-1,
                 agent=peer,
                 col="perspective"
             )
-            peer_posts = peer_posts + ppersp 
+            peer_posts = peer_posts + [pp['post'] for pp in ppersp] 
 
         peer_posts_no_dupl = []
         for pp in peer_posts:       
@@ -496,18 +481,21 @@ class ListeningLMAgent(AbstractLMAgent,LMUtilitiesMixIn):
 
         
     def update_opinion(self, t: int):
-        perspective = self.conversation.get(agent=self.agent, t=t, col='perspective')
+        perspective:Perspective = self.conversation.get(agent=self.agent, t=t, col='perspective')
         polarity, salience = self.elicit_opinion(perspective)            
         self.conversation.contribute(contribution=polarity, t=t, agent=self.agent, col="polarity")
         self.conversation.contribute(contribution=salience, t=t, agent=self.agent, col="salience")
 
         
         
-    def elicit_opinion(self, perspective: List[Tuple[int]]):
+    def elicit_opinion(self, perspective: Perspective):
         
+        # list of posts referenced in current perspective
+        persp_posts: List[Tuple[int]] = [pp['post'] for pp in perspective]
+
         # collect_and_glue_perspective_tokens
         token_ids_cond = self.conversation.topic['intro_tokens']
-        for tt,i in perspective:
+        for tt,i in persp_posts:
             token_ids_cond = token_ids_cond + self.conversation.get(agent=i, t=tt, col='tokens')
         token_ids_cond = token_ids_cond + self.conversation.topic['claim_tokens']['connector']
 
@@ -540,7 +528,7 @@ class ListeningLMAgent(AbstractLMAgent,LMUtilitiesMixIn):
 
                 
 #    def elicit_opinion_batch(self, perspectives:[[(int)]]):
-    def elicit_opinion_batch(self, perspectives:List[List[Tuple[int]]]):
+    def elicit_opinion_batch(self, perspectives:List[Perspective]):
         
         batch_size = len(perspectives)
         fwd_batch_size = self.conversation.global_parameters.get('fwd_batch_size')
@@ -549,8 +537,10 @@ class ListeningLMAgent(AbstractLMAgent,LMUtilitiesMixIn):
         token_ids_cond_batch = []
         # collect_and_glue_perspective_tokens
         for perspective in perspectives:
+            # list of posts referenced in current perspective
+            persp_posts: List[Tuple[int]] = [pp['post'] for pp in perspective]
             token_ids_cond = self.conversation.topic['intro_tokens']
-            for tt,i in perspective:
+            for tt,i in persp_posts:
                 token_ids_cond = token_ids_cond + self.conversation.get(agent=i, t=tt, col='tokens')
             token_ids_cond = token_ids_cond + self.conversation.topic['claim_tokens']['connector']
             token_ids_cond_batch.append(token_ids_cond)
@@ -625,12 +615,12 @@ class GeneratingLMAgent(ListeningLMAgent):
     
     
     def make_contribution(self, t: int):
-        perspective = self.conversation.get(agent=self.agent, t=t, col='perspective')        
+        perspective:Perspective = self.conversation.get(agent=self.agent, t=t, col='perspective')        
         
         # collect_and_glue_perspective_tokens
         tokens = self.conversation.topic['intro_tokens']
         tokens = tokens + [self.NEWLINE_TOKENID]
-        for tt,i in perspective:
+        for tt,i in [pp['post'] for pp in perspective]:
             tokens = tokens + self.conversation.get(agent=i, t=tt, col='tokens')
             tokens = tokens + [self.NEWLINE_TOKENID]
         tokens = tokens + self.conversation.topic['prompt_tokens']
@@ -662,14 +652,14 @@ class GeneratingLMAgent(ListeningLMAgent):
 class FormalModelAgent(ListeningLMAgent):
     """modeling posts and opinions purely formally"""
 
-    def elicit_opinion(self, perspective: List[Tuple[int]]):
+    def elicit_opinion(self, perspective: Perspective):
         reason_strengths:dict = self.conversation.reason_strengths
         if reason_strengths==None:
             print("Error: reason_strengths of conversation not initialized!")
-        pp_rs = [reason_strengths.get(p) for p in perspective]
+        pp_rs = [reason_strengths.get(p['post']) for p in perspective]
         return np.mean(pp_rs), 1
 
-    def elicit_opinion_batch(self, perspectives:List[List[Tuple[int]]]):
+    def elicit_opinion_batch(self, perspectives:List[Perspective]):
         opinions = [self.elicit_opinion(pp) for pp in perspectives]
         polarity_batch = [x for x,_ in opinions]
         salience_batch = [y for _,y in opinions]
