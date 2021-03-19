@@ -354,7 +354,6 @@ class ListeningLMAgent(AbstractLMAgent,LMUtilitiesMixIn):
             mean_new_weights = sum(weights)/len(weights) 
             weights = [(mean_weights/mean_new_weights)*w for w in weights]
 
-
         # sample new perspective according to weights
         new_perspective:Perspective = []
         if m_loss==0:
@@ -448,6 +447,7 @@ class ListeningLMAgent(AbstractLMAgent,LMUtilitiesMixIn):
                     agent=partner,
                     col="perspective"
                 )
+            partner_p = [pp['post'] for pp in partner_p]
             # set weight of all partner posts to 1, others to 0
             weights = [1 if p in partner_p else 0 for p in peer_posts]
 
