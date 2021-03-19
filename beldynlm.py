@@ -416,7 +416,7 @@ class ListeningLMAgent(AbstractLMAgent,LMUtilitiesMixIn):
             if all(w==0 for w in weights):
                 weights = [1]*len(peer_posts)
 
-        elif self.perspective_expansion_method=='confirmation_bias':
+        elif self.perspective_expansion_method=='homophily':
             # homophily_exponent
             h_exp = self.conversation.global_parameters.get('homophily_exponent') # exponent
             # all peers
