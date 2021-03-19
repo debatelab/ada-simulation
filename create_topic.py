@@ -79,10 +79,12 @@ for template in templates:
             else:
                 val = list({'pro','con'}-{parent_val})[0]
             valence_dict[line_split[0]] = val
+            conclusion = ""
+            if random.choice([True, False]):
+                conclusion = random.choice([' So', ' I think', ' I believe', " That's why"]) + random.choice(template.get(val))
             text = (
                 " ".join(line_split[2:]) + 
-                random.choice([' So', ' I think', ' I believe', " That's why"]) + 
-                random.choice(template.get(val))
+                conclusion
             )               
             new_topic['initial_posts'].append({'type':val,'text':text})
     
