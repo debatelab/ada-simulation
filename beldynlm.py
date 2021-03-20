@@ -3,7 +3,7 @@ import numpy as np
 import random
 import json
 
-from typing import TypedDict, Tuple, List
+from typing import Tuple, List
 
 import os
 import os.path
@@ -16,7 +16,8 @@ from transformers import GPT2Tokenizer, GPT2LMHeadModel
 
 
 # Type Aliases
-class PostRefs(TypedDict):
+# class PostRefs(TypedDict):
+class PostRefs: 
     post: Tuple[int, int]
     timestamp: int # used as recency, 0 meaning most recent
 Perspective = List[PostRefs]
