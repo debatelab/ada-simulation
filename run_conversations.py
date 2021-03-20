@@ -28,11 +28,14 @@ parser.add_argument("--topic", help="topic file (json)")
 parser.add_argument("--n_agents", help="number of agents", type=int)
 parser.add_argument("--max_t", help="number of time steps to simulate", type=int)
 parser.add_argument("--n_initial_posts", help="number of initial steps", type=int)
+parser.add_argument("--background_beliefs", help="number of initial posts that will be retained as immutable background beliefs in the context, < context_size", type=int)
 parser.add_argument("--context_size", help="size of perspective (max posts)", type=int)
+parser.add_argument("--memory_loss", help="max number of posts forgotten per interaction, 0: endogeneously determined", type=int)
 parser.add_argument("--self_confidence", help="factor that controls forgetting", type=int)
-parser.add_argument("--perspective_expansion_method", help="'random' or 'confirmation_bias'")
+parser.add_argument("--perspective_expansion_method", help="'random', 'homophily' or 'confirmation_bias'")
 parser.add_argument("--peer_selection_method", help="'all_neighbors' or 'bounded_confidence'")
 parser.add_argument("--conf_bias_exponent", help="conf_bias_exponent, used only with confirmation_bias", type=float)
+parser.add_argument("--homophily_exponent", help="homophily_exponent, used only with homophily", type=float)
 parser.add_argument("--epsilon", help="epsilon, used only with bounded_confidence", type=float)
 parser.add_argument("--relevance_deprecation", help="relevance_deprecation", type=float)
 args = parser.parse_args()
@@ -52,12 +55,15 @@ global_parameters = {
     'max_t':args.max_t if args.max_t else 200,
     'n_initial_posts':args.n_initial_posts if args.n_initial_posts else 5, 
     'initial_neighb-peer_ratio':.5, 
+    'background_beliefs':args.background_beliefs if args.background_beliefs else 0, 
     'context_size':args.context_size if args.context_size else 8, 
+    'memory_loss':args.memory_loss if args.memory_loss else 0, 
     'relevance_deprecation':args.relevance_deprecation if args.relevance_deprecation else .95,
     'self_confidence':args.self_confidence if args.self_confidence else 1,  
     'n_gram_prohibition':5,  
     'perspective_expansion_method':args.perspective_expansion_method if args.perspective_expansion_method else 'random', 
     'conf_bias_exponent':args.conf_bias_exponent if args.conf_bias_exponent else 50,
+    'homophily_exponent':args.homophily_exponent if args.homophily_exponent else 50,
     'peer_selection_method':args.peer_selection_method if args.peer_selection_method else 'all_neighbors', 
     'fwd_batch_size':4
 }
