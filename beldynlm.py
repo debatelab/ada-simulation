@@ -424,6 +424,45 @@ class ListeningLMAgent(AbstractLMAgent,LMUtilitiesMixIn):
             if all(w==0 for w in weights):
                 weights = [1]*len(peer_posts)
 
+        elif self.perspective_expansion_method=='confirmation_bias_lazy':
+            # we select k=size-len(persp_posts) peer_posts whose weights will be set to 1: 
+            #   a. sample k peer peer posts (sample_a), if each is confirming, then add all, else:
+            #   b. sample another k peer posts (sample_b) and add the k most confirming ones of the 2k posts   
+
+            x0 = self.conversation.get(t=0,agent=self.agent,col="polarity") # baseline belief
+            k = size-len(persp_posts)
+            idx_all = list(range(len(peer_posts)))
+
+            if k>=len(peer_posts):
+                idx = idx_all
+            else:
+                sample_a = random.sample(idx_all,k=k)
+                ## elicit opinion batch A
+                persp_batch = [persp_posts + [peer_posts[i]] for i in sample_a]
+                persp_batch = [persp_posts] + persp_batch # add contracted perspective to batch
+                op_batch, _  = self.elicit_opinion_batch(persp_batch)
+                opinion = op_batch[0] # opinion given contracted perspective, no peer post added
+                op_batch = op_batch[1:] # opinions given perspective + indivdual peer post
+                ## confirmation measure, given conditional opinion x
+                def conf(x):
+                    c = x-x0 if opinion>x0 else x0-x
+                    c = 0 if c<0 else c
+                    return c
+                conf_a = [conf(x) for x in op_batch]
+                if all(x>0 for x in conf_a):
+                    idx=sample_a
+                else: 
+                    sample_b = random.sample([i for i in idx_all if not i in sample_a],k=min(k,len(peer_posts)-k))
+                    ## elicit opinion batch B
+                    persp_batch = [persp_posts + [peer_posts[i]] for i in sample_b]
+                    op_batch, _  = self.elicit_opinion_batch(persp_batch)
+                    conf_b = [conf(x) for x in op_batch]
+                    idx = [x for _,x in sorted(zip(conf_a+conf_b,sample_a+sample_b))] #sort indices of peer posts by conf value
+                    idx = idx[:k]
+
+            weights = [1 if i in idx else 0 for i in idx_all]
+
+
         elif self.perspective_expansion_method=='homophily':
             # homophily_exponent
             h_exp = self.conversation.global_parameters.get('homophily_exponent') # exponent
