@@ -3,7 +3,6 @@
 import pandas as pd
 import numpy as np
 import random
-random.seed(a=39562930121113583084284)
 from tqdm import tqdm
 import logging
 
