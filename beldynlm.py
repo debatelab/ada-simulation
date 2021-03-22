@@ -441,7 +441,8 @@ class ListeningLMAgent(AbstractLMAgent,LMUtilitiesMixIn):
                 persp_batch = [persp_posts + [peer_posts[i]] for i in sample_a]
                 persp_batch = [persp_posts] + persp_batch # add contracted perspective to batch
                 op_batch, _  = self.elicit_opinion_batch(persp_batch)
-                opinion = op_batch[0] # opinion given contracted perspective, no peer post added
+                #opinion = op_batch[0] # opinion given contracted perspective, no peer post added
+                opinion = self.conversation.get(t=t-1,agent=self.agent,col="polarity") # belief at t-1
                 op_batch = op_batch[1:] # opinions given perspective + indivdual peer post
                 ## confirmation measure, given conditional opinion x
                 def conf(x):
