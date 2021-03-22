@@ -425,9 +425,9 @@ class ListeningLMAgent(AbstractLMAgent,LMUtilitiesMixIn):
                 weights = [1]*len(peer_posts)
 
         elif self.perspective_expansion_method=='confirmation_bias_lazy':
-            # we select k=size-len(persp_posts) peer_posts whose weights will be set to 1: 
+            # we select up to k=size-len(persp_posts) peer_posts whose weights will be set to 1: 
             #   a. sample k peer peer posts (sample_a), if each is confirming, then add all, else:
-            #   b. sample another k peer posts (sample_b) and add the k most confirming ones of the 2k posts   
+            #   [b. sample another k peer posts (sample_b) and add the k most confirming ones of the 2k posts]   
 
             x0 = self.conversation.get(t=0,agent=self.agent,col="polarity") # baseline belief
             k = size-len(persp_posts)
@@ -449,16 +449,17 @@ class ListeningLMAgent(AbstractLMAgent,LMUtilitiesMixIn):
                     c = 0 if c<0 else c
                     return c
                 conf_a = [conf(x) for x in op_batch]
-                if all(x>0 for x in conf_a):
-                    idx=sample_a
-                else: 
-                    sample_b = random.sample([i for i in idx_all if not i in sample_a],k=min(k,len(peer_posts)-k))
-                    ## elicit opinion batch B
-                    persp_batch = [persp_posts + [peer_posts[i]] for i in sample_b]
-                    op_batch, _  = self.elicit_opinion_batch(persp_batch)
-                    conf_b = [conf(x) for x in op_batch]
-                    idx = [x for _,x in sorted(zip(conf_a+conf_b,sample_a+sample_b))] #sort indices of peer posts by conf value
-                    idx = idx[:k]
+                idx = [i for i,x in zip(sample_a,conf_a) if x>0]
+                # if all(x>0 for x in conf_a):
+                #     idx=sample_a
+                # else: 
+                #     sample_b = random.sample([i for i in idx_all if not i in sample_a],k=min(k,len(peer_posts)-k))
+                #     ## elicit opinion batch B
+                #     persp_batch = [persp_posts + [peer_posts[i]] for i in sample_b]
+                #     op_batch, _  = self.elicit_opinion_batch(persp_batch)
+                #     conf_b = [conf(x) for x in op_batch]
+                #     idx = [x for _,x in sorted(zip(conf_a+conf_b,sample_a+sample_b))] #sort indices of peer posts by conf value
+                #     idx = idx[:k]
 
             weights = [1 if i in idx else 0 for i in idx_all]
 
