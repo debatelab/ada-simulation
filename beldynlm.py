@@ -450,17 +450,17 @@ class ListeningLMAgent(AbstractLMAgent,LMUtilitiesMixIn):
                     c = 0 if c<0 else c
                     return c
                 conf_a = [conf(x) for x in op_batch]
-                idx = [i for i,x in zip(sample_a,conf_a) if x>0]
-                # if all(x>0 for x in conf_a):
-                #     idx=sample_a
-                # else: 
-                #     sample_b = random.sample([i for i in idx_all if not i in sample_a],k=min(k,len(peer_posts)-k))
-                #     ## elicit opinion batch B
-                #     persp_batch = [persp_posts + [peer_posts[i]] for i in sample_b]
-                #     op_batch, _  = self.elicit_opinion_batch(persp_batch)
-                #     conf_b = [conf(x) for x in op_batch]
-                #     idx = [x for _,x in sorted(zip(conf_a+conf_b,sample_a+sample_b))] #sort indices of peer posts by conf value
-                #     idx = idx[:k]
+                #idx = [i for i,x in zip(sample_a,conf_a) if x>0]
+                if all(x>0 for x in conf_a):
+                    idx=sample_a
+                else: 
+                    sample_b = random.sample([i for i in idx_all if not i in sample_a],k=min(k,len(peer_posts)-k))
+                    ## elicit opinion batch B
+                    persp_batch = [persp_posts + [peer_posts[i]] for i in sample_b]
+                    op_batch, _  = self.elicit_opinion_batch(persp_batch)
+                    conf_b = [conf(x) for x in op_batch]
+                    idx = [i for x,i in sorted(zip(conf_a+conf_b,sample_a+sample_b)) if x>0] #sort filtered indices of peer posts by conf value
+                    idx = idx[:k]
 
             weights = [1 if i in idx else 0 for i in idx_all]
 
