@@ -59,6 +59,7 @@ global_parameters = {
     'memory_loss':args.memory_loss if args.memory_loss else 0, 
     'relevance_deprecation':args.relevance_deprecation if args.relevance_deprecation else .95,
     'self_confidence':args.self_confidence if args.self_confidence else 1,  
+    'contribution_probability':.2, # probability that agent will contribute in given round
     'n_gram_prohibition':5,  
     'perspective_expansion_method':args.perspective_expansion_method if args.perspective_expansion_method else 'random', 
     'conf_bias_exponent':args.conf_bias_exponent if args.conf_bias_exponent else 50,
