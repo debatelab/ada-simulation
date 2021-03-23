@@ -389,7 +389,7 @@ class ListeningLMAgent(AbstractLMAgent,LMUtilitiesMixIn):
         
         # add recent contribution of agent herself
         if len(perspective)<size:
-            if self.conversation.get(agent=self.agent, t=t-1, col='pst') != None:
+            if self.conversation.get(agent=self.agent, t=t-1, col='post') != None:
                 perspective = perspective + [{'pst':(t-1,self.agent),'tst':0}]
         
         # list of posts referenced in current perspective
