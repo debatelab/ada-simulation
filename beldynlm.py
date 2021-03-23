@@ -32,7 +32,7 @@ class Conversation:
         self.max_tokens_per_initial_claim = 70
         
         # set up the dataframe
-        columns = ['pst','peers','perspective','tokens','polarity','salience']
+        columns = ['post','peers','perspective','tokens','polarity','salience']
         steps = np.arange(global_parameters['max_t'])
         agents = np.arange(global_parameters['n_agents'])
         steps_agents = [
@@ -45,7 +45,7 @@ class Conversation:
         self.data['perspective']=[[] for i in range(len(self.data))]
         self.data['peers']=[[] for i in range(len(self.data))]
         self.data['tokens']=[[] for i in range(len(self.data))]
-        self.data['pst']=[None for i in range(len(self.data))]
+        self.data['post']=[None for i in range(len(self.data))]
         
 
     def contribute(self, contribution=None, agent:int=0, t:int=0, col:str=None):
