@@ -85,13 +85,15 @@ class Conversation:
             if tokenizer != None:
                 topic['intro_tokens'] = tokenizer(topic['intro'])['input_ids']
                 topic['prompt_tokens'] = tokenizer(topic['prompt'])['input_ids']
-                # list of token lists
-                pro_tokens = [tokenizer(t)['input_ids'] for t in topic['claims']['pro']]
-                con_tokens = [tokenizer(t)['input_ids'] for t in topic['claims']['con']]
+                # filter initial posts
+                initial_posts = topic['initial_posts']
+                initial_posts = [p for p in initial_posts if len(tokenizer(p['text'])['input_ids'])<self.max_tokens_per_initial_claim]
+                topic['initial_posts'] = initial_posts
+                # tokenize prompt and claims
                 topic['claim_tokens'] = {
                     'connector': tokenizer(topic['claims']['connector'])['input_ids'],
-                    'pro':[t for t in pro_tokens if len(t)<self.max_tokens_per_initial_claim], # filtered list of token lists
-                    'con':[t for t in con_tokens if len(t)<self.max_tokens_per_initial_claim] # filtered list of token lists
+                    'pro':[tokenizer(t)['input_ids'] for t in topic['claims']['pro']], # list of token lists
+                    'con':[tokenizer(t)['input_ids'] for t in topic['claims']['con']] # list of token lists
                 }
             return True
         
