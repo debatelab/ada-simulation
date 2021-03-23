@@ -64,7 +64,7 @@ global_parameters = {
     'conf_bias_exponent':args.conf_bias_exponent if args.conf_bias_exponent else 50,
     'homophily_exponent':args.homophily_exponent if args.homophily_exponent else 50,
     'peer_selection_method':args.peer_selection_method if args.peer_selection_method else 'all_neighbors', 
-    'fwd_batch_size':4
+    'fwd_batch_size':1
 }
 
 peer_selection_parameters = [
