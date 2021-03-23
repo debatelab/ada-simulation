@@ -159,7 +159,15 @@ class LMUtilitiesMixIn:
             if len(drop_later)>0:
                 processed = processed[:(drop_later[0]+1)]
         else:
-            processed = processed + [self.ETC_TOKENID]
+            def is_repetitive(l):
+                if len(l)==0:
+                    return False
+                # check whether end of tokenlist l is sufficiently diverse:
+                repetitive = any(len(set(l[-i:]))/len(l[-i:])<=.34 for i in range(1,len(l)+1))
+                return repetitive
+            # index from which on token list is repetitive:    
+            j = next((i for i in range(len(processed)) if is_repetitive(processed[:i])), len(processed)+1)
+            processed = processed[:j-1] + [self.ETC_TOKENID]
 
         return processed        
         
