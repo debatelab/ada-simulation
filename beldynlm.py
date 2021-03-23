@@ -29,6 +29,7 @@ class Conversation:
     def __init__(self, global_parameters:dict=None, topic:dict=None):
         self.topic = topic
         self.global_parameters = global_parameters
+        self.max_tokens_per_initial_claim = 70
         
         # set up the dataframe
         columns = ['pst','peers','perspective','tokens','polarity','salience']
@@ -84,10 +85,13 @@ class Conversation:
             if tokenizer != None:
                 topic['intro_tokens'] = tokenizer(topic['intro'])['input_ids']
                 topic['prompt_tokens'] = tokenizer(topic['prompt'])['input_ids']
+                # list of token lists
+                pro_tokens = [tokenizer(t)['input_ids'] for t in topic['claims']['pro']]
+                con_tokens = [tokenizer(t)['input_ids'] for t in topic['claims']['con']]
                 topic['claim_tokens'] = {
                     'connector': tokenizer(topic['claims']['connector'])['input_ids'],
-                    'pro':[tokenizer(t)['input_ids'] for t in topic['claims']['pro']], # list of token lists
-                    'con':[tokenizer(t)['input_ids'] for t in topic['claims']['con']] # list of token lists
+                    'pro':[t for t in pro_tokens if len(t)<self.max_tokens_per_initial_claim], # filtered list of token lists
+                    'con':[t for t in con_tokens if len(t)<self.max_tokens_per_initial_claim] # filtered list of token lists
                 }
             return True
         
