@@ -535,14 +535,20 @@ class ListeningLMAgent(AbstractLMAgent,LMUtilitiesMixIn):
 
         # we don't exclude agent herself at this stage
         # peers = [i for i in peers if i!=self.agent]        
+
         peer_posts = []
         for peer in peers:
+            # 1. peer_posts include all posts in peers' perspectives
             ppersp:Perspective = self.conversation.get(
                 t=t-1,
                 agent=peer,
                 col="perspective"
             )
             peer_posts = peer_posts + [pp['pst'] for pp in ppersp] 
+
+            # 2. add posts that peers have contributed at previous step
+            if self.conversation.get(agent=peer, t=t-1, col='post') != None:
+                peer_posts = peer_posts + [(t-1,peer)]
 
         peer_posts_no_dupl = []
         for pp in peer_posts:       
