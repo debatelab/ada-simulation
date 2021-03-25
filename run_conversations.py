@@ -23,6 +23,7 @@ parser.add_argument("--model", help="hugging face model'")
 parser.add_argument("--ensemble_id", help="also used as results folder'")
 parser.add_argument("--run_id", help="results file name")
 parser.add_argument("--agent_type", help="'listening' or 'generating' or 'formal'")
+parser.add_argument("--decoding_key", help="key of decoding profile, e.g. 'narrow_1'")
 parser.add_argument("--topic", help="topic file (json)")
 parser.add_argument("--n_agents", help="number of agents", type=int)
 parser.add_argument("--max_t", help="number of time steps to simulate", type=int)
@@ -78,17 +79,34 @@ peer_selection_parameters = [
      }
 ]
 
-decoding_parameters = {
-    'do_sample':True, 
-    'num_beams':5,
-    'temperature': 1, # 1.3,
-    'top_p': 0.5, # 0.99, 
-    'top_k':0,
-     #'no_repeat_ngram_size':8,
-    'repetition_penalty':1.2,
-    'max_length':40,
-    'bad_words_ids':[[LMUtilitiesMixIn.NEWLINE_TOKENID],[LMUtilitiesMixIn.ETC_TOKENID]]
+decoding_profiles = {
+    "narrow_1":{
+        'do_sample':True, 
+        'num_beams':5,
+        'temperature': 1.0,
+        'top_p': 0.5, 
+        'top_k':0,
+        'repetition_penalty':1.2,
+        'max_length':40,
+        'bad_words_ids':[[LMUtilitiesMixIn.NEWLINE_TOKENID],[LMUtilitiesMixIn.ETC_TOKENID]]
+    },
+    "creative_1":{
+        'do_sample':True, 
+        'num_beams':5,
+        'temperature': 1.4,
+        'top_p': 0.95, 
+        'top_k':0,
+        'repetition_penalty':1.2,
+        'max_length':40,
+        'bad_words_ids':[[LMUtilitiesMixIn.NEWLINE_TOKENID],[LMUtilitiesMixIn.ETC_TOKENID]]
+    }    
 }
+
+decoding_key = args.agent_type if args.agent_type else 'creative_1'
+if not decoding_key in decoding_profiles:
+    decoding_key = 'creative_1'
+decoding_parameters = decoding_profiles[decoding_key]
+
 
 
 ###################
@@ -148,7 +166,8 @@ for t in tqdm(range(global_parameters['n_initial_posts'],global_parameters['max_
 
         # Generate posts
         if global_parameters.get('agent_type')=='generating':
-            agent.make_contribution(t)
+            if random.uniform(0,1)<global_parameters.get('contribution_probability'):
+                agent.make_contribution(t)
         
         # Update opinion
         agent.update_opinion(t)
