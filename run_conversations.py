@@ -102,7 +102,7 @@ decoding_profiles = {
     }    
 }
 
-decoding_key = args.agent_type if args.agent_type else 'creative_1'
+decoding_key = args.decoding_key if args.decoding_key else 'creative_1'
 if not decoding_key in decoding_profiles:
     decoding_key = 'creative_1'
 decoding_parameters = decoding_profiles[decoding_key]
