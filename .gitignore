@@ -3,5 +3,6 @@ env/*
 results/*
 ensemble.md
 .sh
+.vscode*
 test*
 __pycache__*
