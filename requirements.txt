@@ -27,6 +27,7 @@ nbformat==5.1.2
 nest-asyncio==1.5.1
 nltk==3.5
 packaging==20.9
+pandas
 pandocfilters==1.4.3
 parso==0.8.1
 pexpect==4.8.0
