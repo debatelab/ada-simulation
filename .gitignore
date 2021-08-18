@@ -4,3 +4,4 @@ results/*
 ensemble.md
 .sh
 test*
+__pycache__*
