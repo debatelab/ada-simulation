@@ -1,6 +1,8 @@
 # Belief Dynamics with LMs
 
-Multi-agent simulation model of belief dynamics with LMs.
+Multi-agent simulation model of belief dynamics with LMs. This repo makes available the code for simulating conversations with artificial deliberative agents presented in [Betz (2021)](http://arxiv.org/abs/2104.06737).
+
+The twin repo [ada-inspect](https://github.com/debatelab/ada-inspect) provides simulation results and an app to inspect them.
 
 We recommend to install the required packages (`requirements.txt`) in a virtual environment. 
 
