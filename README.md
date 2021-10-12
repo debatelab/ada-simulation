@@ -1,4 +1,4 @@
-# Belief Dynamics with LMs
+# Artificial Deliberative Agents Simulation
 
 Multi-agent simulation model of belief dynamics with LMs. This repo makes available the code for simulating conversations with artificial deliberative agents presented in [Betz (2021)](http://arxiv.org/abs/2104.06737).
 
